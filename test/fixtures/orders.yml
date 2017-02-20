@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  code: MyString
+  date: 2017-02-16
+  total_price: 
+  paid_amount: 
+  status: MyString
+
+two:
+  customer: two
+  code: MyString
+  date: 2017-02-16
+  total_price: 
+  paid_amount: 
+  status: MyString

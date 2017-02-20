@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  container: one
+  price: 9.99
+  number: 1
+  status: MyString
+  import_order: one
+
+two:
+  product: two
+  container: two
+  price: 9.99
+  number: 1
+  status: MyString
+  import_order: two

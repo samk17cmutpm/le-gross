@@ -80,6 +80,9 @@ test:
 #
 production:
   <<: *default
-  database: le_gross_production
-  username: le_gross
-  password: <%= ENV['LE_GROSS_DATABASE_PASSWORD'] %>
+  database: d3kdvbksm6299m
+  username: azczxqczlmkxoq
+  password: a60ac7942dc8aac991d26b56e7345f4842d0c58ea91de02f4eaf90461e1df41d
+  host: ec2-23-21-224-106.compute-1.amazonaws.com
+  url: postgres://azczxqczlmkxoq:a60ac7942dc8aac991d26b56e7345f4842d0c58ea91de02f4eaf90461e1df41d@ec2-23-21-224-106.compute-1.amazonaws.com:5432/d3kdvbksm6299m
+  port: 5432

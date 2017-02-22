@@ -1,0 +1,72 @@
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+   <nav class="sidebar" data-sidebar-anyclick-close="">
+      <!-- START sidebar nav-->
+      <ul class="nav">
+         <!-- START user info-->
+         <li class="has-user-block">
+            <div id="user-block" class="collapse">
+               <div class="item user-block">
+                  <!-- User picture-->
+                  <div class="user-block-picture">
+                     <div class="user-block-status">
+                        <img src="<%= image_path(current_sale.image) %>" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
+                        <div class="circle circle-success circle-lg"></div>
+                     </div>
+                  </div>
+                  <!-- Name and Job-->
+                  <div class="user-block-info">
+                     <span class="user-block-name">Hello, <%= current_sale.name %></span>
+                     <span class="user-block-role"><%= current_sale.email %></span>
+                  </div>
+               </div>
+            </div>
+         </li>
+         <!-- END user info-->
+         <!-- Iterates over all sidebar items-->
+         <li class="nav-heading">
+            <span>Danh mục chính</span>
+         </li>
+         <li class="<%= 'active' if controller?('sales/log_exported_products')%>">
+            <a href="#log_exported_products" title="Xuất hàng" data-toggle="collapse">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Xuất hàng</span>
+            </a>
+            <ul id="log_exported_products" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Xuất hàng</li>
+               <li class="<%= 'active' if controller?('sales/log_exported_products') && action?('index') %>">
+                  <a href="/sales/log_exported_products" title="Danh sách xuất hàng">
+                     <span>Danh sách xuất hàng</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('sales/log_exported_products') && action?('new') %>">
+                  <a href="/sales/log_exported_products/new" title="Thêm phiếu xuất hàng">
+                     <span>Thêm phiếu xuất hàng</span>
+                  </a>
+               </li>
+            </ul>
+         </li>
+         <li class="<%= 'active' if controller?('sales/log_imported_products')%>">
+            <a href="#log_imported_products" title="Nhập hàng" data-toggle="collapse">
+               <em class="icon-grid"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Nhập hàng</span>
+            </a>
+            <ul id="log_imported_products" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Nhập hàng</li>
+               <li class="<%= 'active' if controller?('sales/log_imported_products') && action?('index') %>">
+                  <a href="/sales/log_imported_products" title="Danh sách nhập hàng">
+                     <span>Danh sách nhập hàng</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('sales/log_imported_products') && action?('new') %>">
+                  <a href="/sales/log_imported_products/new" title="Thêm phiếu nhập hàng">
+                     <span>Thêm phiếu nhập hàng</span>
+                  </a>
+               </li>
+            </ul>
+         </li>
+      </ul>
+      <!-- END sidebar nav-->
+   </nav>
+</div>
+<!-- END Sidebar (left)-->

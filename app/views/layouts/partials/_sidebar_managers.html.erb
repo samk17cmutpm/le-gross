@@ -1,0 +1,53 @@
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+   <nav class="sidebar" data-sidebar-anyclick-close="">
+      <!-- START sidebar nav-->
+      <ul class="nav">
+         <!-- START user info-->
+         <li class="has-user-block">
+            <div id="user-block" class="collapse">
+               <div class="item user-block">
+                  <!-- User picture-->
+                  <div class="user-block-picture">
+                     <div class="user-block-status">
+                        <img src="<%=  %>" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
+                        <div class="circle circle-success circle-lg"></div>
+                     </div>
+                  </div>
+                  <!-- Name and Job-->
+                  <div class="user-block-info">
+                     <span class="user-block-name">Hello, sam dy </span>
+                     <span class="user-block-role">samk17cmutpm@gmail.com</span>
+                  </div>
+               </div>
+            </div>
+         </li>
+         <!-- END user info-->
+         <!-- Iterates over all sidebar items-->
+         <li class="nav-heading">
+            <span>Categories</span>
+         </li>
+         <li class="<%= 'active' if controller?('managers/products')%>">
+            <a href="#products" title="Product" data-toggle="collapse">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Orders</span>
+            </a>
+            <ul id="products" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Orders From Customers</li>
+               <li class="<%= 'active' if controller?('orders') && action?('index') %>">
+                  <a href="/orders/index" title="Orders From Customers">
+                     <span>Orders From Customers</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('orders') && action?('new') %>">
+                  <a href="/orders/new" title="Add New Order">
+                     <span>Add New Order</span>
+                  </a>
+               </li>
+            </ul>
+         </li>
+      </ul>
+      <!-- END sidebar nav-->
+   </nav>
+</div>
+<!-- END Sidebar (left)-->

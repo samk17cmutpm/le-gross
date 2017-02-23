@@ -6,10 +6,8 @@
     <meta name="description" content="Bootstrap Admin App + Ruby on Rails">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
     <title>LeGross</title>
-    <%= csrf_meta_tags %>
+    <%= include_gon %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'base' %>
     <!-- =============== VIEW VENDOR STYLES ===============-->
     <%= stylesheet_link_tag params[:controller] %>
@@ -49,13 +47,16 @@
          <%= render partial: "layouts/partials/footer" %>
       </footer>
     </div>
-
     <!-- =============== VENDOR SCRIPTS ===============-->
     <%= javascript_include_tag 'base' %>
     <!-- =============== VIEW VENDOR SCRIPTS ===============-->
     <%= javascript_include_tag params[:controller] %>
     <!-- =============== APP SCRIPTS ===============-->
     <%= javascript_include_tag 'application' %>
+
+    <% if controller?('orders') && action?('new') %>
+      <%= javascript_include_tag 'custom/orders/create_new_orders' %>
+    <% end %>
 
     <%= yield :body_area %>
   </body>

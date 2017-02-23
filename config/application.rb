@@ -71,7 +71,8 @@ module LeGross
 
     config.assets.precompile += [
                                 'orders.js',
-                                'orders.css'
+                                'orders.css',
+                                'custom/orders/create_new_orders.js'
                                 ]
   end
 end

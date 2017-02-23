@@ -23,8 +23,7 @@
         allowClear: true,
         theme: 'bootstrap'
     });
-
+    
   });
 
 })(window, document, window.jQuery);
-

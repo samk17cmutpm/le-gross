@@ -1,0 +1,2 @@
+class ImportOrdersItem < ApplicationRecord
+end

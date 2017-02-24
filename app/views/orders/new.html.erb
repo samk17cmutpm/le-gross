@@ -7,7 +7,7 @@
               <h4 class="panel-title">Please Select Your Customer</h4>
            </div>
            <div class="panel-body bt">
-             <select id="log_exported_products_customers" class="form-control" name="customer_id">
+             <select id="customer_list" class="form-control" name="customer_id">
                   <% @customers.each do |customer| %>
                     <option class="form-control" value="<%= customer.id %>"><%= customer.first_name + " " + customer.last_name %></option>
                   <% end %>
@@ -16,15 +16,9 @@
            <table class="table">
               <tbody>
                  <tr>
-                    <td>Customer's Email</td>
+                    <td>Customer's Phone Number</td>
                     <td>
-                       <div id="customer_code" class="text-right text-bold"><%= @customers[0].email %></div>
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Customer's Address</td>
-                    <td>
-                       <div id="customer_address" class="text-right text-bold"><%= @customers[0].address %></div>
+                       <div id="customer_phone_number" class="text-right text-bold"><%= @customers[0].phone_number %></div>
                     </td>
                  </tr>
               </tbody>
@@ -76,10 +70,10 @@
                                         </select>
                                       </td>
                                       <td class="order-qty">
-                                        <input type="number" name="quantity_0" value="1" min="1" max="100" step="1" class="form-control" />
+                                        <input type="number" name="quantity_of_the_product_0" value="1" min="1" max="100" step="1" class="form-control" />
                                       </td>
                                       <td class="order-total">
-                                        <button type="button" id="remove_0" class="btn btn-sm btn-danger">
+                                        <button type="button" id="remove_the_product_0" class="btn btn-sm btn-danger">
                                           <em class="fa fa-trash"></em>
                                         </button>
                                       </td>
@@ -88,7 +82,7 @@
                              </table>
                           </div>
                           <div class="mt-lg">
-                             <button id =submit type="submit" name="products"  class="btn btn-info">Make The Order</button>
+                             <button id =submit type="submit" name="ids_of_element"  class="btn btn-info">Make The Order</button>
                           </div>
                        </div>
                     </div>

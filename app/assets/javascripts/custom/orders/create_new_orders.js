@@ -9,13 +9,15 @@
     // This the first INITIALIZE FOR THE FORM
     var customer_list_element = $("#customer_list");
     var customer_phone_number_element = $("#customer_phone_number");
-    var products_list_element = $("#products_list");
+    var products_list_element = $("#products_list_0");
+    var remove_the_product_element = $("#remove_the_product_0");
     var inputs_element = $(".input_fields_wrap");
     var add_new_product_element = $("#add_new_product");
     var submit = $("#submit");
 
-    var inputs_order = 0;
 
+    var inputs_order = 0;
+    var total_inputs =  1;
     var params_of_signal = [0];
 
     $(customer_list_element).select2({
@@ -30,6 +32,15 @@
         theme: 'bootstrap'
     });
 
+    $(remove_the_product_element).click(function() {
+      if (total_inputs > 1) {
+        $(this).parent('td').parent('tr').remove();
+        --total_inputs;
+        var index = columns.indexOf(0);
+        params_of_signal.splice(index, 1);
+      }
+    });
+
 
     $(customer_list_element).on('change', function () {
       var customer_phone_number = find_object_by_id_in_a_list(customers_data, this.value);
@@ -40,6 +51,7 @@
     $(add_new_product_element).click(function(e){
 
       ++inputs_order;
+      ++total_inputs;
 
       params_of_signal.push(inputs_order);
 
@@ -63,6 +75,15 @@
 
       $(select_option_element).on('change', function() {
 
+      });
+
+      $(remove_the_product_element).click(function() {
+        if (total_inputs > 1) {
+          $(this).parent('td').parent('tr').remove();
+          --total_inputs;
+          var index = columns.indexOf(inputs_order);
+          params_of_signal.splice(index, 1);
+        }
       });
 
     });

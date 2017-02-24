@@ -3,7 +3,7 @@ require 'faker'
 min = 0
 max = 100
 
-for index in min..max  # Products
+for index in min..max-1  # Products
   code = Faker::Code.asin
   name = Faker::Beer.name
 
@@ -12,7 +12,7 @@ end
 
 @products = Product.all
 
-for index in min..max
+for index in min..max-1
   email = Faker::Internet.email
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -34,7 +34,7 @@ end
 
 @customers = Customer.all
 
-for index in min..max
+for index in min..max-1
   customer_id = @customers[rand(min..max-1)].id
   code = Faker::Code.imei
   date = Faker::Date.between(100.days.ago, Date.today)
@@ -56,18 +56,25 @@ end
 
 @orders = Order.all
 
-for index in min..max
-  order_id = @orders[rand(min..max-1)]
-  data = {
+for index in min..max-1
+  order_id = @orders[index].id
+  data_for_import_order = {
     order_id: order_id
   }
 
-  ImportOrder.create(data)
+  data_for_order_item = {
+    order_id: order_id,
+    product_id: @products[index].id,
+    number: rand(min..max-1)
+  }
+
+  ImportOrder.create(data_for_import_order)
+  OrderItem.create(data_for_order_item)
 end
 
 @import_orders = ImportOrder.all
 
-for index in min..max
+for index in min..max-1
   date = Faker::Date.between(100.days.ago, Date.today)
   total_price = Faker::Number.number(8)
   status = Faker::Team.state
@@ -81,7 +88,7 @@ end
 
 @containers = Container.all
 
-for index in min..max
+for index in min..max-1
   product_id = @products[rand(min..max-1)].id
   container_id = @containers[rand(min..max-1)].id
   import_order_id = @import_orders[rand(min..max-1)].id

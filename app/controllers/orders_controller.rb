@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def new
     @products = Product.all;
@@ -16,12 +16,16 @@ class OrdersController < ApplicationController
 
     # Customer Id
     @customer_id = params[:customer_id]
+    # Paid Amount By Customer
+    @paid_amount = params[:paid_amount]
 
     # Creating New Order
     @order = Order.create!(
+      :code => Faker::Code.imei,
       :customer_id => @customer_id,
       :date => Date.today.strftime("%a, %e %b %Y"),
-      :status => "Waiting"
+      :status => "Waiting",
+      :paid_amount => @paid_amount
     )
 
     # Creating New Oder Items
@@ -35,6 +39,13 @@ class OrdersController < ApplicationController
       )
     end
 
-    redirect_to action: 'index'
+    redirect_to action: 'show', id: @order.id
+  end
+
+  def show
+    @id = params[:id]
+    @order = Order.find_by(id: @id)
+    @customer = @order.customer
+    @order_items = @order.order_items
   end
 end

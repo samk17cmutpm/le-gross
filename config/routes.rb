@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post  'orders/create'
 
+  get   'orders/:id', to: 'orders#show'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

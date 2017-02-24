@@ -35,12 +35,10 @@
                <td><%= order.paid_amount %></td>
                <td>____</td>
                <td class="text-center">
-                  <span class="label label-info">Standby</span>
+                  <span class="label label-info"><%= order.status %></span>
                </td>
                <td class="text-center">
-                  <button type="button" class="btn btn-sm btn-default">
-                     <em class="fa fa-search"></em>
-                  </button>
+                 <%= link_to 'View', controller: "orders", action: "show", id: order.id %>
                </td>
             </tr>
           <% end %>

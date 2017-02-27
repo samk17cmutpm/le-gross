@@ -100,9 +100,9 @@
               <tr>
                  <td><a href=""><%= order_item.product.name %></a>
                  </td>
-                 <td>$ Undifined</td>
+                 <td><%="$ #{order_item.price}" %></td>
                  <td><%= order_item.number %></td>
-                 <td>$ Undifined</td>
+                 <td><%="$ #{order_item.price * order_item.number}" %></td>
               </tr>
             <% end %>
          </tbody>

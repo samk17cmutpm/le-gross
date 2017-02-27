@@ -28,15 +28,25 @@ class OrdersController < ApplicationController
       :paid_amount => @paid_amount
     )
 
+    @total_price = 0
+
     # Creating New Oder Items
     @ids_of_element = params[:ids_of_element].split(",").map { |s| s.to_i }
     @ids_of_element.each do |element|
+
       @product_id = params["product_id_#{element}"]
       @number = params["quantity_of_the_product_#{element}"]
+      @price = params["price_of_the_product_#{element}"]
+
+      @total_price = @total_price + (@number.to_i * @price.to_i)
+
       @order.order_items.create!(
         :product_id => @product_id,
-        :number => @number
+        :number => @number,
+        :price => @price
       )
+
+      @order.update(total_price: @total_price)
     end
 
     redirect_to action: 'show', id: @order.id

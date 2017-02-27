@@ -1,7 +1,7 @@
 require 'faker'
 
 min = 0
-max = 100
+max = 10
 
 for index in min..max-1  # Products
   code = Faker::Code.asin
@@ -48,7 +48,7 @@ for index in min..max-1
     date: date,
     total_price: total_price,
     paid_amount: paid_amount,
-    status: status
+    status: "Waiting"
   }
 
   Order.create(data)
@@ -65,7 +65,8 @@ for index in min..max-1
   data_for_order_item = {
     order_id: order_id,
     product_id: @products[index].id,
-    number: rand(min..max-1)
+    number: rand(min..max-1),
+    price: rand(min..max-1)
   }
 
   ImportOrder.create(data_for_import_order)

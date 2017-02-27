@@ -27,12 +27,12 @@
          <li class="nav-heading">
             <span>Categories</span>
          </li>
-         <li class="<%= 'active' if controller?('managers/products')%>">
-            <a href="#products" title="Product" data-toggle="collapse">
+         <li class="<%= 'active' if controller?('orders')%>">
+            <a href="#orders" title="Orders" data-toggle="collapse">
                <em class="icon-speedometer"></em>
                <span data-localize="sidebar.nav.DASHBOARD">Orders</span>
             </a>
-            <ul id="products" class="nav sidebar-subnav collapse">
+            <ul id="orders" class="nav sidebar-subnav collapse">
                <li class="sidebar-subnav-header">Orders From Customers</li>
                <li class="<%= 'active' if controller?('orders') && action?('index') %>">
                   <a href="/orders/index" title="Orders From Customers">
@@ -42,6 +42,26 @@
                <li class="<%= 'active' if controller?('orders') && action?('new') %>">
                   <a href="/orders/new" title="Add New Order">
                      <span>Add New Order</span>
+                  </a>
+               </li>
+            </ul>
+         </li>
+
+         <li class="<%= 'active' if controller?('repositories')%>">
+            <a href="#repositories" title="Repository" data-toggle="collapse">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Repositories</span>
+            </a>
+            <ul id="repositories" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Repositories</li>
+               <li class="<%= 'active' if controller?('repositories') && action?('index') %>">
+                  <a href="/repositories/index" title="Repositories">
+                     <span>Repositories</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('repositories') && action?('new') %>">
+                  <a href="/repositories/new" title="Add New Repository">
+                     <span>Add New Repository</span>
                   </a>
                </li>
             </ul>

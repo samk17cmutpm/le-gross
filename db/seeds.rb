@@ -109,3 +109,15 @@ for index in min..max-1
   ImportOrderItem.create(data)
 end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+for index in min..max-1
+  product_id = @products[rand(min..max-1)].id
+  number = rand(min..max)
+  status = "Waiting"
+  data = {
+    product_id: product_id,
+    number: number,
+    status: status
+  }
+  Repository.create(data)
+end

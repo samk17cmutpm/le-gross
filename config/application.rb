@@ -70,9 +70,13 @@ module LeGross
                                 ]
 
     config.assets.precompile += [
+                                # Orders Controller
                                 'orders.js',
                                 'orders.css',
-                                'custom/orders/create_new_orders.js'
+                                'custom/orders/create_new_orders.js',
+                                # Repositories Controller
+                                'repositories.js',
+                                'repositories.css'
                                 ]
   end
 end

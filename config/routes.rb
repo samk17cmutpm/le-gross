@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  get   'orders/new'
+  get   'repositories', to: "repositories#index"
+
+  get   'repositories/new'
+
+  get   'orders', to: "orders#index"
 
   get   'orders/index'
 

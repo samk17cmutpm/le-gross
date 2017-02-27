@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get   'orders', to: "orders#index"
 
-  get   'orders/index'
+  get   'orders/new'
 
   post  'orders/create'
 

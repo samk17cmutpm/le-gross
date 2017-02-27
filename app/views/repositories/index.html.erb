@@ -12,6 +12,9 @@
             <th class="text-center">
                <strong>Waiting</strong>
             </th>
+            <th class="text-center">
+               <strong>Need To Buy More</strong>
+            </th>
          </tr>
       </thead>
       <tbody>
@@ -21,6 +24,9 @@
                <td><%= repository.number %></td>
                <td class="text-center">
                   <span class="label label-info"><%= repository.waiting %></span>
+               </td>
+               <td class="text-center">
+                  <span class="label label-danger"><%= repository.waiting - repository.number if repository.waiting >= repository.number %></span>
                </td>
             </tr>
           <% end %>

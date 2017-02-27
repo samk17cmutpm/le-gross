@@ -5,7 +5,11 @@ max = 10
 
 for index in min..max-1  # Products
   code = Faker::Code.asin
-  name = Faker::Beer.name
+
+  name = loop do
+    name_temp = Faker::Beer.name
+    break name_temp unless Product.exists?(:name => name_temp)
+  end
 
   Product.create(code: code, name: name)
 end
@@ -13,9 +17,21 @@ end
 @products = Product.all
 
 for index in min..max-1
-  email = Faker::Internet.email
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
+  email = loop do
+    email_temp = Faker::Internet.email
+    break email_temp unless Customer.exists?(:email => email_temp)
+  end
+
+  first_name = loop do
+    first_name_temp = Faker::Name.first_name
+    break first_name_temp unless Customer.exists?(:first_name => first_name_temp)
+  end
+
+  last_name = loop do
+    last_name_temp = Faker::Name.last_name
+    break last_name_temp unless Customer.exists?(:last_name => last_name_temp)
+  end
+  
   address = Faker::Address.street_address
   phone_number = Faker::PhoneNumber.cell_phone
   status = Faker::Team.state
@@ -111,13 +127,13 @@ end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
 for index in min..max-1
-  product_id = @products[rand(min..max-1)].id
-  number = rand(min..max)
-  status = "Waiting"
+  product_id = @products[index].id
+  number = rand(min+1..max)
+  waiting = rand(min+1..max)
   data = {
     product_id: product_id,
     number: number,
-    status: status
+    waiting: waiting
   }
   Repository.create(data)
 end

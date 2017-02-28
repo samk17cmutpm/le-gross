@@ -1,0 +1,43 @@
+<div class="content-heading">Import Items</div>
+<div class="table-responsive b0">
+   <table id="datatable1" class="table table-striped table-hover">
+      <thead>
+         <tr>
+            <th style="width:80px">
+               <strong>Import Id</strong>
+            </th>
+            <th>
+               <strong>Product Name</strong>
+            </th>
+            <th>
+               <strong>Price</strong>
+            </th>
+            <th>
+               <strong>Quantity</strong>
+            </th>
+            <th class="text-center">
+               <strong>STATUS</strong>
+            </th>
+            <th class="text-center">
+               <strong>Action</strong>
+            </th>
+         </tr>
+      </thead>
+      <tbody>
+          <% @import_order_items.each_with_index do |import_order_item, index| %>
+            <tr>
+               <td><%= import_order_item.id %></td>
+               <td><%= import_order_item.product.name %></td>
+               <td><%= import_order_item.price %></td>
+               <td><%= import_order_item.number %></td>
+               <td class="text-center">
+                  <span class="label label-info"><%= import_order_item.status %></span>
+               </td>
+               <td class="text-center">
+                 <%= link_to 'View', controller: "orders", action: "show", id: import_order_item.id %>
+               </td>
+            </tr>
+          <% end %>
+      </tbody>
+   </table>
+</div>

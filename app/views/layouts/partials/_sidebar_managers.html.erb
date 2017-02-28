@@ -24,10 +24,10 @@
          </li>
          <!-- END user info-->
          <!-- Iterates over all sidebar items-->
-         <li class="nav-heading">
+          <li class="nav-heading">
             <span>Categories</span>
-         </li>
-         <li class="<%= 'active' if controller?('orders')%>">
+          </li>
+          <li class="<%= 'active' if controller?('orders')%>">
             <a href="#orders" title="Orders" data-toggle="collapse">
                <em class="icon-speedometer"></em>
                <span data-localize="sidebar.nav.DASHBOARD">Orders</span>
@@ -45,9 +45,9 @@
                   </a>
                </li>
             </ul>
-         </li>
+          </li>
 
-         <li class="<%= 'active' if controller?('repositories')%>">
+          <li class="<%= 'active' if controller?('repositories')%>">
             <a href="#repositories" title="Repository" data-toggle="collapse">
                <em class="icon-speedometer"></em>
                <span data-localize="sidebar.nav.DASHBOARD">Repositories</span>
@@ -60,7 +60,27 @@
                   </a>
                </li>
             </ul>
-         </li>
+          </li>
+
+          <li class="<%= 'active' if controller?('imports')%>">
+            <a href="#imports" title="Imports" data-toggle="collapse">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Imports</span>
+            </a>
+            <ul id="imports" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Imports</li>
+               <li class="<%= 'active' if controller?('imports') && action?('index') %>">
+                  <a href="/imports" title="Imports">
+                     <span>Imports</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('imports') && action?('new') %>">
+                  <a href="/imports/new" title="Add New Import">
+                     <span>Add New Import</span>
+                  </a>
+               </li>
+            </ul>
+          </li>
       </ul>
       <!-- END sidebar nav-->
    </nav>

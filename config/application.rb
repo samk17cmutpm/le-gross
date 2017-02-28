@@ -76,7 +76,11 @@ module LeGross
                                 'custom/orders/create_new_orders.js',
                                 # Repositories Controller
                                 'repositories.js',
-                                'repositories.css'
+                                'repositories.css',
+                                # Imports Controller
+                                'imports.js',
+                                'imports.css',
+                                'custom/imports/create_new_imports.js'
                                 ]
   end
 end

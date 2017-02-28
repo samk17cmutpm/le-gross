@@ -58,6 +58,10 @@
       <%= javascript_include_tag 'custom/orders/create_new_orders' %>
     <% end %>
 
+    <% if controller?('imports') && action?('new') %>
+      <%= javascript_include_tag 'custom/imports/create_new_imports' %>
+    <% end %>
+
     <%= yield :body_area %>
   </body>
 </html>

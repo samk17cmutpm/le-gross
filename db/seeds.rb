@@ -31,7 +31,7 @@ for index in min..max-1
     last_name_temp = Faker::Name.last_name
     break last_name_temp unless Customer.exists?(:last_name => last_name_temp)
   end
-  
+
   address = Faker::Address.street_address
   phone_number = Faker::PhoneNumber.cell_phone
   status = Faker::Team.state
@@ -106,12 +106,11 @@ end
 @containers = Container.all
 
 for index in min..max-1
-  product_id = @products[rand(min..max-1)].id
+  product_id = @products[index].id
   container_id = @containers[rand(min..max-1)].id
   import_order_id = @import_orders[rand(min..max-1)].id
-  price = Faker::Number.number(10)
+  price = Faker::Number.number(4)
   number = Faker::Number.between(min + 1, max)
-  status = Faker::Team.state
 
   data = {
     product_id: product_id,
@@ -119,7 +118,7 @@ for index in min..max-1
     import_order_id: import_order_id,
     price: price,
     number: number,
-    status: status
+    status: "waiting"
   }
 
   ImportOrderItem.create(data)

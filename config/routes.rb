@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   get   'orders/:id', to: 'orders#show'
 
+  get   'imports', to: 'imports#index'
+
+  get   'imports/new'
+
+  post  'imports/create'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

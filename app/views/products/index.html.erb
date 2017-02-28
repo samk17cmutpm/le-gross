@@ -20,7 +20,7 @@
                <td><%= product.code %></td>
                <td><%= product.name %></td>
                <td class="text-center">
-                  <%= link_to 'Edit', controller: "products", action: "update" %>
+                  <%= link_to 'Edit', controller: "products", action: "show", id: product.id %>
                </td>
             </tr>
           <% end %>

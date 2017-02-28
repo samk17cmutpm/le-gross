@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get   'products/new'
 
-  get   'products/update'
+  post  'products/update'
+
+  get   'products/show'
 
   post  'products/create'
 

@@ -9,10 +9,19 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find_by(id: params[:product_id])
+    @product_name = params[:product_name]
+    @product.update(
+      name: @product_name
+    )
+    redirect_to action: 'index'
+  end
+
+  def show
+    @product = Product.find_by(id: params[:id])
   end
 
   def create
-
     @product_name = params[:product_name]
     @product_code = loop do
       product_code_temp = Faker::Code.asin
@@ -22,7 +31,6 @@ class ProductsController < ApplicationController
       name: @product_name,
       code: @product_code
     )
-
     redirect_to action: 'index'
   end
 end

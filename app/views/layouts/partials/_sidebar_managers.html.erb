@@ -27,6 +27,27 @@
           <li class="nav-heading">
             <span>Categories</span>
           </li>
+
+          <li class="<%= 'active' if controller?('products')%>">
+            <a href="#products" title="Products" data-toggle="collapse">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Products</span>
+            </a>
+            <ul id="products" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Products</li>
+               <li class="<%= 'active' if controller?('products') && action?('index') %>">
+                  <a href="/products" title="Products">
+                     <span>Products</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('products') && action?('new') %>">
+                  <a href="/products/new" title="Add New Product">
+                     <span>Add New Product</span>
+                  </a>
+               </li>
+            </ul>
+          </li>
+
           <li class="<%= 'active' if controller?('orders')%>">
             <a href="#orders" title="Orders" data-toggle="collapse">
                <em class="icon-speedometer"></em>

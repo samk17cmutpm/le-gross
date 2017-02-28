@@ -34,7 +34,7 @@ class ImportsController < ApplicationController
     @repository = Repository.find_by(product_id: @product_id)
 
     if @repository == nil
-      @repository.create(
+      Repository.create(
         product_id: @product_id,
         number: @import_order_item.number,
         waiting: 0

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get   'products', to: 'products#index'
+
+  get   'products/new'
+
+  get   'products/update'
+
+  post  'products/create'
+
   get   'repositories', to: "repositories#index"
 
   get   'repositories/new'

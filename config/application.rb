@@ -80,7 +80,10 @@ module LeGross
                                 # Imports Controller
                                 'imports.js',
                                 'imports.css',
-                                'custom/imports/create_new_imports.js'
+                                'custom/imports/create_new_imports.js',
+                                # Products Controller
+                                'products.js',
+                                'products.css'
                                 ]
   end
 end

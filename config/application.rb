@@ -83,7 +83,11 @@ module LeGross
                                 'custom/imports/create_new_imports.js',
                                 # Products Controller
                                 'products.js',
-                                'products.css'
+                                'products.css',
+                                # Packs Controller
+                                'packs.js',
+                                'packs.css',
+                                'custom/packs/create_new_packs.js'
                                 ]
   end
 end

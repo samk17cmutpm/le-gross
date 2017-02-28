@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get   'packs', to: 'packs#index'
+
+  get   'packs/new'
+
+  get   'packs/update'
+
+  get   'packs/show'
+
+  post  'packs/create'
+
+  get   'packs/finished'
+
+  get   'packs/received'
+
   get   'products', to: 'products#index'
 
   get   'products/new'
@@ -28,7 +42,7 @@ Rails.application.routes.draw do
 
   post  'imports/create'
 
-  get  'imports/update_status'
+  get   'imports/update_status'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

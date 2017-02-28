@@ -62,6 +62,10 @@
       <%= javascript_include_tag 'custom/imports/create_new_imports' %>
     <% end %>
 
+    <% if controller?('packs') && action?('new') %>
+      <%= javascript_include_tag 'custom/packs/create_new_packs' %>
+    <% end %>
+
     <%= yield :body_area %>
   </body>
 </html>

@@ -102,6 +102,26 @@
                </li>
             </ul>
           </li>
+
+          <li class="<%= 'active' if controller?('packs')%>">
+            <a href="#packs" title="Packs" data-toggle="collapse">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Packs</span>
+            </a>
+            <ul id="packs" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Packs</li>
+               <li class="<%= 'active' if controller?('packs') && action?('index') %>">
+                  <a href="/packs" title="Packs">
+                     <span>Packs</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('packs') && action?('new') %>">
+                  <a href="/packs/new" title="Add New Pack">
+                     <span>Add New Pack</span>
+                  </a>
+               </li>
+            </ul>
+          </li>
       </ul>
       <!-- END sidebar nav-->
    </nav>

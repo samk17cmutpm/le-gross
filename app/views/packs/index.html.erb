@@ -1,0 +1,38 @@
+<div class="content-heading">Packs</div>
+<div class="table-responsive b0">
+   <table id="datatable1" class="table table-striped table-hover">
+      <thead>
+         <tr>
+            <th>
+               <strong>Product Code</strong>
+            </th>
+            <th>
+               <strong>Product Name</strong>
+            </th>
+            <th>
+               <strong>Quantity</strong>
+            </th>
+            <th>
+               <strong>Status</strong>
+            </th>
+            <th class="text-center">
+               <strong>Action</strong>
+            </th>
+         </tr>
+      </thead>
+      <tbody>
+          <% @packs.each_with_index do |pack, index| %>
+            <tr>
+               <td><%= pack.product.code %></td>
+               <td><%= pack.product.name %></td>
+               <td><%= pack.quantity %></td>
+               <td><span class="label label-info"><%= pack.status %></span></td>
+               <td class="text-center">
+                  <%= link_to 'Received', controller: "packs", action: "received", id: pack.id %>
+                  <%= link_to 'Finished', controller: "packs", action: "finished", id: pack.id %>
+               </td>
+            </tr>
+          <% end %>
+      </tbody>
+   </table>
+</div>

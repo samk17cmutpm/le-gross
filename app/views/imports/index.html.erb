@@ -34,7 +34,7 @@
                   <span class="label label-info"><%= import_order_item.status %></span>
                </td>
                <td class="text-center">
-                 <%= link_to 'View', controller: "orders", action: "show", id: import_order_item.id %>
+                 <%= link_to 'Done', controller: "imports", action: "update_status", id: import_order_item.id if import_order_item.status != "Done" %>
                </td>
             </tr>
           <% end %>

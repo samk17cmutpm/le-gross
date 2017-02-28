@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   post  'imports/create'
 
+  get  'imports/update_status'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

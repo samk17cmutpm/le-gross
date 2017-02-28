@@ -1,5 +1,6 @@
 class ImportsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
   def index
     @import_order_items = ImportOrderItem.all
   end
@@ -21,7 +22,27 @@ class ImportsController < ApplicationController
       price: @price_of_the_product,
       status: @status
     )
-    
+
+    redirect_to action: 'index'
+  end
+
+  def update_status
+    @import_order_item = ImportOrderItem.find_by(id: params[:id])
+    @import_order_item.update(status: "Done")
+
+    @product_id =  @import_order_item.product.id
+    @repository = Repository.find_by(product_id: @product_id)
+
+    if @repository == nil
+      @repository.create(
+        product_id: @product_id,
+        number: @import_order_item.number,
+        waiting: 0
+      )
+    else
+      @repository.update!(number: @repository.number + @import_order_item.number)
+    end
+
     redirect_to action: 'index'
   end
 end

@@ -26,23 +26,26 @@ class PacksController < ApplicationController
   end
 
   def create
-
+    @repositories = Repository.all
     @status = params[:status]
-
     @ids_of_element = params[:ids_of_element].split(",").map { |s| s.to_i }
-
     @ids_of_element.each do |element|
+
       @product_id = params["product_id_#{element}"]
       @quantity = params["quantity_of_the_product_#{element}"]
 
-      Pack.create!(
-        product_id: @product_id,
-        quantity: @quantity,
-        status: @status
-      )
+      @repository = @repositories.find_by(product_id: @product_id)
+
+      if (@repository.number >= @quantity.to_i)
+        @pack = Pack.create!(
+            product_id: @product_id,
+            quantity: @quantity,
+            status: @status
+        )
+        @repository.update(number: @repository.number - @pack.quantity)
+      end
 
     end
-
     redirect_to action: 'index'
   end
 
@@ -50,12 +53,6 @@ class PacksController < ApplicationController
     @pack_id = params[:id]
     @pack = Pack.find_by(id: @pack_id)
     @pack.update(status: "finished")
-
-    @product = Product.find_by(id: @pack.product.id)
-
-    @repository = Repository.find_by(product_id: @product.id)
-    @repository.update(number: @repository.number - @pack.quantity)
-
     redirect_to action: 'index'
   end
 

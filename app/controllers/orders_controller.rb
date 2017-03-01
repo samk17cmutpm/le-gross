@@ -56,6 +56,6 @@ class OrdersController < ApplicationController
     @id = params[:id]
     @order = Order.find_by(id: @id)
     @customer = @order.customer
-    @order_items = @order.order_items
+    @order_items = @order.order_items.includes(:product)
   end
 end

@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
   def index
-    @repositories = Repository.all
+    @repositories = Repository.all.includes(:product)
   end
 
   def new

@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.all.includes(:customer)
   end
 
   def create

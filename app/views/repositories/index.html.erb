@@ -26,7 +26,7 @@
                   <span class="label label-info"><%= repository.waiting %></span>
                </td>
                <td class="text-center">
-                  <span class="label label-danger"><%= repository.waiting - repository.number if repository.waiting >= repository.number %></span>
+                  <span class="label label-danger"><%= repository.waiting - repository.number if repository.waiting > repository.number %></span>
                </td>
             </tr>
           <% end %>

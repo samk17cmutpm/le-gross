@@ -40,6 +40,8 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 gem 'gon'
+gem 'rspec-rails'
+gem 'capybara'
 
 
 group :development, :test do

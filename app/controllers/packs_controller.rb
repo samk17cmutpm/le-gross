@@ -52,7 +52,7 @@ class PacksController < ApplicationController
   def finished
     @pack_id = params[:id]
     @pack = Pack.find_by(id: @pack_id)
-    @pack.update(status: "finished")
+    @pack.update(status: "Finished")
     redirect_to action: 'index'
   end
 

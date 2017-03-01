@@ -14,7 +14,7 @@ class ImportsController < ApplicationController
     @product_id = params[:product_id]
     @quantity_of_the_product = params[:quantity_of_the_product]
     @price_of_the_product = params[:price_of_the_product]
-    @status = "waiting"
+    @status = "Waiting"
 
     ImportOrderItem.create!(
       product_id: @product_id,

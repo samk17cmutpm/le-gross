@@ -118,7 +118,7 @@ for index in min..max-1
     import_order_id: import_order_id,
     price: price,
     number: number,
-    status: "waiting"
+    status: "Waiting"
   }
 
   ImportOrderItem.create(data)

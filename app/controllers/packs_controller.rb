@@ -2,7 +2,7 @@ class PacksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @packs = Pack.all
+    @packs = Pack.all.includes(:product)
   end
 
   def new

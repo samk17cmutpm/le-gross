@@ -52,13 +52,13 @@
                                   <tr>
                                       <td class="order-item-content">
                                         <select id="products_list_0" class="form-control wd-xl" name="product_id_0" >
-                                          <% @products.each do |product| %>
-                                             <option class="form-control" value="<%= product.id %>"><%= product.name %></option>
+                                          <% @repositories.each do |repository| %>
+                                             <option class="form-control" value="<%= repository.product.id %>"><%= repository.product.name %></option>
                                           <% end %>
                                         </select>
                                       </td>
                                       <td class="order-qty">
-                                        <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" class="form-control" />
+                                        <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" max="<%= @repositories[0].number %>" class="form-control" />
                                       </td>
                                       <td class="order-total">
                                         <button type="button" id="remove_the_product_0" class="btn btn-sm btn-danger">

@@ -6,15 +6,16 @@ class PacksController < ApplicationController
   end
 
   def new
-    @statuses = ["on the way", "received", "finished"]
+    @statuses = ["On the way", "Received", "Finished"]
 
-    @repositories = Repository.all
+    @repositories = Repository.all.includes(:product)
 
     @products = Array.new
     @repositories.each do |repository|
       @products.push(repository.product)
     end
 
+    gon.repositories = @repositories.to_json
     gon.products = @products.to_json
   end
 

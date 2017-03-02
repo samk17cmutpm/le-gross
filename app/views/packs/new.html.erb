@@ -1,82 +1,85 @@
-<div class="row">
-    <form method="post" action="create" novalidate="novalidate">
-      <div class="col-md-3">
-          <div class="panel b">
-            <div class="panel-heading bb">
-               <h4 class="panel-title">Please Select The Status Of Pack</h4>
-            </div>
-            <div class="panel-body bt">
-              <select id="status_list" class="form-control" name="status">
-                   <% @statuses.each do |status| %>
-                     <option class="form-control" value="<%= status %>"><%= status %></option>
-                   <% end %>
-               </select>
-            </div>
-          </div>
-      </div>
-      <div class="col-md-9">
-        <div class="container-md">
-           <!-- Checkout Process-->
-              <div id="accordion" class="panel-group">
-                 <div class="panel b">
-                    <div class="panel-heading">
-                       <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse6">Please Select The Product</a>
-                       </h4>
-                    </div>
-                    <div id="acc1collapse6" class="panel-collapse collapse in">
-                       <div id="collapse06" class="panel-body">
-                          <div class="table-responsive">
-                             <table class="table">
-                                <colgroup>
-                                   <col span="1" class="order-qty" />
-                                   <col span="1" class="order-qty" />
-                                </colgroup>
-                                <thead class="bg-gray-lighter">
-                                   <tr>
-                                      <th class="wd-xl">Product Name</th>
-                                      <th class="wd-xl">Quantity</th>
-                                      <th></th>
-                                   </tr>
-                                </thead>
-                                <tfoot>
-                                  <tr>
-                                    <td colspan="2"></td>
-                                    <td colspan="1" >
-                                      <button type="button" class="btn btn-sm btn-success" id="add_new_product">
-                                        <em class="fa fa-plus-circle"></em>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tfoot>
-                                <tbody class="input_fields_wrap">
-                                  <tr>
-                                      <td class="order-item-content">
-                                        <select id="products_list_0" class="form-control wd-xl" name="product_id_0" >
-                                          <% @repositories.each do |repository| %>
-                                             <option class="form-control" value="<%= repository.product.id %>"><%= repository.product.name %></option>
-                                          <% end %>
-                                        </select>
-                                      </td>
-                                      <td class="order-qty">
-                                        <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" max="<%= @repositories[0].number %>" class="form-control" />
-                                      </td>
-                                      <td class="order-total">
-                                        <button type="button" id="remove_the_product_0" class="btn btn-sm btn-danger">
-                                          <em class="fa fa-trash"></em>
+<% if @repositories.empty? %>
+  <p>You Repository Is Empty Now</p>
+  <%= link_to '<em class="fa fa-plus-circle fa-fw mr-sm"></em> Add New Import <br>'.html_safe, imports_new_path, :class => "btn btn-primary pull-center" %>
+<% else %>
+  <div class="row">
+      <form method="post" action="create" novalidate="novalidate">
+        <div class="col-md-12">
+          <div class="container-xl">
+             <!-- Checkout Process-->
+                <div id="accordion" class="panel-group">
+                   <div class="panel b">
+                      <div class="panel-heading">
+                         <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse6">Please Select The Product</a>
+                         </h4>
+                      </div>
+                      <div id="acc1collapse6" class="panel-collapse collapse in">
+                         <div id="collapse06" class="panel-body">
+                            <div class="table-responsive">
+                               <table class="table">
+                                  <colgroup>
+                                     <col span="1" class="order-qty" />
+                                     <col span="1" class="order-qty" />
+                                  </colgroup>
+                                  <thead class="bg-gray-lighter">
+                                     <tr>
+                                        <th class="wd-xl">Product Name</th>
+                                        <th class="wd-xl">Quantity</th>
+                                        <th class="wd-xl">Shipment By</th>
+                                        <th class="wd-xl">Note</th>
+                                        <th></th>
+                                     </tr>
+                                  </thead>
+                                  <tfoot>
+                                    <tr>
+                                      <td colspan="4"></td>
+                                      <td colspan="1" >
+                                        <button type="button" class="btn btn-sm btn-success" id="add_new_product">
+                                          <em class="fa fa-plus-circle"></em>
                                         </button>
                                       </td>
-                                  </tr>
-                                </tbody>
-                             </table>
-                          </div>
-                          <div class="mt-lg">
-                             <button id="submit" type="submit" name="ids_of_element"  class="btn btn-info">Create New Pack</button>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
+                                    </tr>
+                                  </tfoot>
+                                  <tbody class="input_fields_wrap">
+                                    <tr>
+                                        <td class="order-item-content">
+                                          <select id="products_list_0" class="form-control wd-xl" name="product_id_0" >
+                                            <% @repositories.each do |repository| %>
+                                               <option class="form-control" value="<%= repository.product.id %>"><%= repository.product.name %></option>
+                                            <% end %>
+                                          </select>
+                                        </td>
+                                        <td class="order-qty">
+                                          <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" max="<%= @repositories[0].number %>" class="form-control" />
+                                        </td>
+                                        <td class="order-qty">
+                                          <select id="shipment_by_list_0" class="form-control wd-xl" name="shipment_by_0" >
+                                            <% @shipment_by_list.each do |shipment_by| %>
+                                               <option class="form-control" value="<%= shipment_by %>"><%= shipment_by %></option>
+                                            <% end %>
+                                          </select>
+                                        </td>
+                                        <td class="order-qty">
+                                          <input type="text" name="note_of_the_product_0" class="form-control" />
+                                        </td>
+                                        <td class="order-total">
+                                          <button type="button" id="remove_the_product_0" class="btn btn-sm btn-danger">
+                                            <em class="fa fa-trash"></em>
+                                          </button>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                               </table>
+                            </div>
+                            <div class="mt-lg">
+                               <button id="submit" type="submit" name="ids_of_element"  class="btn btn-info">Create New Pack</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+          </div>
         </div>
-      </div>
-   </form>
-</div>
+     </form>
+  </div>
+<% end %>

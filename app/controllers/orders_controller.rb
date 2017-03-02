@@ -40,6 +40,18 @@ class OrdersController < ApplicationController
 
       @total_price = @total_price + (@number.to_i * @price.to_i)
 
+      @repository = Repository.find_by(product_id: @product_id)
+
+      if @repository == nil
+        Repository.create(
+          product_id: @product_id,
+          number: 0,
+          waiting: @number
+        )
+      else
+        @repository.update!(waiting: @repository.waiting + @number.to_i)
+      end
+
       @order.order_items.create!(
         :product_id => @product_id,
         :number => @number,

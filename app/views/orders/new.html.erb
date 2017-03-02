@@ -1,104 +1,114 @@
-<div class="row">
-    <form method="post" action="create" novalidate="novalidate">
-
-     <div class="col-md-3">
-        <div class="panel b">
-           <div class="panel-heading bb">
-              <h4 class="panel-title">Please Select Your Customer</h4>
-           </div>
-           <div class="panel-body bt">
-             <select id="customer_list" class="form-control" name="customer_id">
-                  <% @customers.each do |customer| %>
-                    <option class="form-control" value="<%= customer.id %>"><%= customer.first_name + " " + customer.last_name %></option>
-                  <% end %>
-              </select>
-           </div>
-           <div class="panel-heading bb">
-              <h4 class="panel-title">Customer Paid Amount</h4>
-           </div>
-           <div class="panel-body bt">
-             <input type="number" name="paid_amount" value="0" min="0" step="1" class="form-control" />
-           </div>
-           <table class="table">
-              <tbody>
-                 <tr>
-                    <td>Customer's Phone Number</td>
-                    <td>
-                       <div id="customer_phone_number" class="text-right text-bold"><%= @customers[0].phone_number %></div>
-                    </td>
-                 </tr>
-              </tbody>
-           </table>
-        </div>
-     </div>
-     <div class="col-md-9">
-        <div class="container-md">
-           <!-- Checkout Process-->
-              <div id="accordion" class="panel-group">
-                 <div class="panel b">
-                    <div class="panel-heading">
-                       <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse6">Please Select The Product</a>
-                       </h4>
-                    </div>
-                    <div id="acc1collapse6" class="panel-collapse collapse in">
-                       <div id="collapse06" class="panel-body">
-                          <div class="table-responsive">
-                             <table class="table">
-                                <colgroup>
-                                   <col span="1" class="order-qty" />
-                                   <col span="1" class="order-qty" />
-                                   <col span="1" class="order-total" />
-                                </colgroup>
-                                <thead class="bg-gray-lighter">
-                                   <tr>
-                                      <th class="wd-xl">Product Name</th>
-                                      <th class="wd-xl">Quantity</th>
-                                      <th class="wd-xl">Price Of Product</th>
-                                      <th></th>
-                                   </tr>
-                                </thead>
-                                <tfoot>
-                                  <tr>
-                                    <td colspan="3"></td>
-                                    <td colspan="1" >
-                                      <button type="button" class="btn btn-sm btn-success" id="add_new_product">
-                                        <em class="fa fa-plus-circle"></em>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tfoot>
-                                <tbody class="input_fields_wrap">
-                                  <tr>
-                                      <td class="order-item-content">
-                                        <select id="products_list_0" class="form-control wd-xl" name="product_id_0" >
-                                          <% @products.each do |product| %>
-                                             <option class="form-control" value="<%= product.id %>"><%= product.name %></option>
-                                          <% end %>
-                                        </select>
-                                      </td>
-                                      <td class="order-qty">
-                                        <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" class="form-control" />
-                                      </td>
-                                      <td class="order-qty">
-                                        <input type="number" name="price_of_the_product_0" value="1" min="1" step="1" class="form-control" />
-                                      </td>
-                                      <td class="order-total">
-                                        <button type="button" id="remove_the_product_0" class="btn btn-sm btn-danger">
-                                          <em class="fa fa-trash"></em>
-                                        </button>
-                                      </td>
-                                  </tr>
-                                </tbody>
-                             </table>
-                          </div>
-                          <div class="mt-lg">
-                             <button id="submit" type="submit" name="ids_of_element"  class="btn btn-info">Make The Order</button>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-        </div>
-     </div>
-   </form>
-</div>
+<% if @customers.empty? || @products.empty? %>
+  <% if @customers.empty? %>
+    <p>You haven't created any new customer, Please Add At Least One Customer To System</p>
+    <%= link_to '<em class="fa fa-plus-circle fa-fw mr-sm"></em> Add New Customer <br>'.html_safe, customers_new_path, :class => "btn btn-primary pull-center" %>
+  <% end %>
+  <% if @products.empty? %>
+    <p>You haven't created any new product, Please Add At Least One Product To System</p>
+    <%= link_to '<em class="fa fa-plus-circle fa-fw mr-sm"></em> Add New Product <br>'.html_safe, products_new_path, :class => "btn btn-primary pull-center" %>
+  <% end %>
+<% else %>
+  <div class="row">
+      <form method="post" action="create" novalidate="novalidate">
+         <div class="col-md-3">
+            <div class="panel b">
+               <div class="panel-heading bb">
+                  <h4 class="panel-title">Please Select Your Customer</h4>
+               </div>
+               <div class="panel-body bt">
+                 <select id="customer_list" class="form-control" name="customer_id">
+                      <% @customers.each do |customer| %>
+                        <option class="form-control" value="<%= customer.id %>"><%= customer.first_name + " " + customer.last_name %></option>
+                      <% end %>
+                  </select>
+               </div>
+               <div class="panel-heading bb">
+                  <h4 class="panel-title">Customer Paid Amount</h4>
+               </div>
+               <div class="panel-body bt">
+                 <input type="number" name="paid_amount" value="0" min="0" step="1" class="form-control" />
+               </div>
+               <table class="table">
+                  <tbody>
+                     <tr>
+                        <td>Customer's Phone Number</td>
+                        <td>
+                           <div id="customer_phone_number" class="text-right text-bold"><%= @customers[0].phone_number %></div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="col-md-9">
+            <div class="container-md">
+               <!-- Checkout Process-->
+                  <div id="accordion" class="panel-group">
+                     <div class="panel b">
+                        <div class="panel-heading">
+                           <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse6">Please Select The Product</a>
+                           </h4>
+                        </div>
+                        <div id="acc1collapse6" class="panel-collapse collapse in">
+                           <div id="collapse06" class="panel-body">
+                              <div class="table-responsive">
+                                 <table class="table">
+                                    <colgroup>
+                                       <col span="1" class="order-qty" />
+                                       <col span="1" class="order-qty" />
+                                       <col span="1" class="order-total" />
+                                    </colgroup>
+                                    <thead class="bg-gray-lighter">
+                                       <tr>
+                                          <th class="wd-xl">Product Name</th>
+                                          <th class="wd-xl">Quantity</th>
+                                          <th class="wd-xl">Price Of Product</th>
+                                          <th></th>
+                                       </tr>
+                                    </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <td colspan="3"></td>
+                                        <td colspan="1" >
+                                          <button type="button" class="btn btn-sm btn-success" id="add_new_product">
+                                            <em class="fa fa-plus-circle"></em>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody class="input_fields_wrap">
+                                      <tr>
+                                          <td class="order-item-content">
+                                            <select id="products_list_0" class="form-control wd-xl" name="product_id_0" >
+                                              <% @products.each do |product| %>
+                                                 <option class="form-control" value="<%= product.id %>"><%= product.name %></option>
+                                              <% end %>
+                                            </select>
+                                          </td>
+                                          <td class="order-qty">
+                                            <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" class="form-control" />
+                                          </td>
+                                          <td class="order-qty">
+                                            <input type="number" name="price_of_the_product_0" value="1" min="1" step="1" class="form-control" />
+                                          </td>
+                                          <td class="order-total">
+                                            <button type="button" id="remove_the_product_0" class="btn btn-sm btn-danger">
+                                              <em class="fa fa-trash"></em>
+                                            </button>
+                                          </td>
+                                      </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <div class="mt-lg">
+                                 <button id="submit" type="submit" name="ids_of_element"  class="btn btn-info">Make The Order</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+            </div>
+         </div>
+     </form>
+  </div>
+<% end %>

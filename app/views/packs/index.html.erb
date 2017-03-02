@@ -4,13 +4,19 @@
       <thead>
          <tr>
             <th>
-               <strong>Product Code</strong>
+               <strong>Code</strong>
             </th>
             <th>
                <strong>Product Name</strong>
             </th>
             <th>
                <strong>Quantity</strong>
+            </th>
+            <th>
+               <strong>Note</strong>
+            </th>
+            <th>
+               <strong>Shipment By</strong>
             </th>
             <th>
                <strong>Status</strong>
@@ -23,9 +29,11 @@
       <tbody>
           <% @packs.each_with_index do |pack, index| %>
             <tr>
-               <td><%= pack.product.code %></td>
+               <td><%= pack.code %></td>
                <td><%= pack.product.name %></td>
                <td><%= pack.quantity %></td>
+               <td><%= pack.note %></td>
+               <td><%= pack.shipment_by %></td>
                <td><span class="label label-info"><%= pack.status %></span></td>
                <td class="text-center">
                   <%= link_to 'Received', controller: "packs", action: "received", id: pack.id %>

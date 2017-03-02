@@ -6,7 +6,7 @@ class PacksController < ApplicationController
   end
 
   def new
-    @statuses = ["On the way", "Received", "Finished"]
+    @shipment_by_list = ["Airplane", "Truck", "Others"]
 
     @repositories = Repository.all.includes(:product)
 
@@ -17,6 +17,7 @@ class PacksController < ApplicationController
 
     gon.repositories = @repositories.to_json
     gon.products = @products.to_json
+    gon.shipment_by_list = @shipment_by_list.to_json
   end
 
   def update
@@ -27,21 +28,34 @@ class PacksController < ApplicationController
 
   def create
     @repositories = Repository.all
-    @status = params[:status]
     @ids_of_element = params[:ids_of_element].split(",").map { |s| s.to_i }
     @ids_of_element.each do |element|
 
+      # Generate Code For Pack
+      @pack_code = loop do
+        pack_code_temp = Faker::Code.asin
+        break pack_code_temp unless Pack.exists?(:code => pack_code_temp)
+      end
+
+      # Get params from server
       @product_id = params["product_id_#{element}"]
       @quantity = params["quantity_of_the_product_#{element}"]
+      @note = params["note_of_the_product_#{element}"]
+      @shipment_by = params["shipment_by_#{element}"]
 
+      # Find Product In Repository
       @repository = @repositories.find_by(product_id: @product_id)
 
       if (@repository.number >= @quantity.to_i)
         @pack = Pack.create!(
+            code: @pack_code,
             product_id: @product_id,
             quantity: @quantity,
-            status: @status
+            status: "On The Way",
+            note: @note,
+            shipment_by: @shipment_by
         )
+        # Update Repository
         @repository.update(number: @repository.number - @pack.quantity)
       end
 

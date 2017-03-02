@@ -1,0 +1,65 @@
+<div class="content-heading">Edit Customer's Information</div>
+<form class="panel" id="form_edit_customer" method="post" action="update" data-parsley-validate="" novalidate="">
+   <div role="tabpanel">
+      <ul class="nav nav-tabs nav-justified">
+         <li role="presentation" class="active"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Customer Edit</a>
+         </li>
+      </ul>
+      <div class="tab-content">
+         <div id="edit" role="tabpanel" class="tab-pane active">
+            <fieldset hidden>
+              <div class="form-group">
+                 <label class="col-md-2 control-label">id:</label>
+                 <div class="col-md-10">
+                    <input type="text" value="<%= @customer.id %>" name="id" class="form-control" required="required">
+                 </div>
+              </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Email:</label>
+                  <div class="col-md-10">
+                     <input type="text" value="<%= @customer.email %>" name="email" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">First Name:</label>
+                  <div class="col-md-10">
+                     <input type="text" value="<%= @customer.first_name %>" name="first_name" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Last Name:</label>
+                  <div class="col-md-10">
+                     <input type="text" value="<%= @customer.last_name %>" name="last_name" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Address:</label>
+                  <div class="col-md-10">
+                     <input type="text" value="<%= @customer.address %>" name="address" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Phone Number :</label>
+                  <div class="col-md-10">
+                     <input type="text" value="<%= @customer.phone_number %>" name="phone_number" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+         </div>
+      </div>
+   </div>
+</form>
+<div class="text-right mt-lg">
+   <%= link_to '<button type="button" class="btn btn-warning">Discard</button>'.html_safe, customers_path %>
+   <button id="action_update_customer" type="button" class="btn btn-success" >Save</button>
+</div>

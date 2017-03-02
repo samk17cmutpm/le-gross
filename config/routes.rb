@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get   'customers', to: 'customers#index'
+
+  get   'customers/new'
+
+  get   'customers/show'
+
+  get   'customers/edit'
+
+  post  'customers/create'
+
+  post  'customers/update'
+
   get   'packs', to: 'packs#index'
 
   get   'packs/new'

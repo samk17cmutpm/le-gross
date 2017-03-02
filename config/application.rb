@@ -87,7 +87,12 @@ module LeGross
                                 # Packs Controller
                                 'packs.js',
                                 'packs.css',
-                                'custom/packs/create_new_packs.js'
+                                'custom/packs/create_new_packs.js',
+                                # Customers Controller
+                                'customers.js',
+                                'customers.css',
+                                'custom/customers/customers_edit.js',
+                                'custom/customers/customers_new.js'
                                 ]
   end
 end

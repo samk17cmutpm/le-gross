@@ -1,0 +1,57 @@
+<div class="content-heading">Create New Customer's Information</div>
+<form class="panel" id="form_create_customer" method="post" action="create" data-parsley-validate="" novalidate="">
+   <div role="tabpanel">
+      <ul class="nav nav-tabs nav-justified">
+         <li role="presentation" class="active"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Customer New</a>
+         </li>
+      </ul>
+      <div class="tab-content">
+         <div id="edit" role="tabpanel" class="tab-pane active">
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Email:</label>
+                  <div class="col-md-10">
+                     <input type="text" name="email" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">First Name:</label>
+                  <div class="col-md-10">
+                     <input type="text" name="first_name" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Last Name:</label>
+                  <div class="col-md-10">
+                     <input type="text" name="last_name" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Address:</label>
+                  <div class="col-md-10">
+                     <input type="text" name="address" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-2 control-label">Phone Number :</label>
+                  <div class="col-md-10">
+                     <input type="text" name="phone_number" class="form-control" required="required">
+                  </div>
+               </div>
+            </fieldset>
+         </div>
+      </div>
+   </div>
+</form>
+<div class="text-right mt-lg">
+   <%= link_to '<button type="button" class="btn btn-warning">Discard</button>'.html_safe, customers_path %>
+   <button id="action_create_customer" type="button" class="btn btn-success" >Save</button>
+</div>

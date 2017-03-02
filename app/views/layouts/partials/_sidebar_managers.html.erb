@@ -28,6 +28,26 @@
             <span>Categories</span>
           </li>
 
+          <li class="<%= 'active' if controller?('customers')%>">
+            <a href="#customers" title="Customers" data-toggle="collapse">
+               <em class="icon-user"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Customers</span>
+            </a>
+            <ul id="customers" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Customers</li>
+               <li class="<%= 'active' if controller?('customers') && action?('index') %>">
+                  <a href="/customers" title="Customers">
+                     <span>Customers</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('customers') && action?('new') %>">
+                  <a href="/customers/new" title="Add New Customer">
+                     <span>Add New Customer</span>
+                  </a>
+               </li>
+            </ul>
+          </li>
+
           <li class="<%= 'active' if controller?('products')%>">
             <a href="#products" title="Products" data-toggle="collapse">
                <em class="icon-speech"></em>

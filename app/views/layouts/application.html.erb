@@ -10,6 +10,9 @@
 
     <%= stylesheet_link_tag 'base' %>
     <!-- =============== VIEW VENDOR STYLES ===============-->
+
+    <%= stylesheet_link_tag 'forms' %>
+
     <%= stylesheet_link_tag params[:controller] %>
 
     <!-- =============== APP STYLES ===============-->
@@ -50,6 +53,9 @@
     <!-- =============== VENDOR SCRIPTS ===============-->
     <%= javascript_include_tag 'base' %>
     <!-- =============== VIEW VENDOR SCRIPTS ===============-->
+    
+    <%= javascript_include_tag 'forms' %>
+
     <%= javascript_include_tag params[:controller] %>
     <!-- =============== APP SCRIPTS ===============-->
     <%= javascript_include_tag 'application' %>
@@ -64,6 +70,14 @@
 
     <% if controller?('packs') && action?('new') %>
       <%= javascript_include_tag 'custom/packs/create_new_packs' %>
+    <% end %>
+
+    <% if controller?('customers') && action?('edit') %>
+      <%= javascript_include_tag 'custom/customers/customers_edit' %>
+    <% end %>
+
+    <% if controller?('customers') && action?('new') %>
+      <%= javascript_include_tag 'custom/customers/customers_new' %>
     <% end %>
 
     <%= yield :body_area %>

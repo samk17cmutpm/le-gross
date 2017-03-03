@@ -46,7 +46,7 @@ class PacksController < ApplicationController
       # Find Product In Repository
       @repository = @repositories.find_by(product_id: @product_id)
 
-      if (@repository.number >= @quantity.to_i)
+      if (@repository.quantity >= @quantity.to_i)
         @pack = Pack.create!(
             code: @pack_code,
             product_id: @product_id,

@@ -35,10 +35,10 @@ class OrdersController < ApplicationController
     @ids_of_element.each do |element|
 
       @product_id = params["product_id_#{element}"]
-      @number = params["quantity_of_the_product_#{element}"]
+      @quantity = params["quantity_of_the_product_#{element}"]
       @price = params["price_of_the_product_#{element}"]
 
-      @total_price = @total_price + (@number.to_i * @price.to_i)
+      @total_price = @total_price + (@quantity.to_i * @price.to_i)
 
       @repository = Repository.find_by(product_id: @product_id)
 
@@ -46,15 +46,15 @@ class OrdersController < ApplicationController
         Repository.create(
           product_id: @product_id,
           number: 0,
-          waiting: @number
+          waiting: @quantity
         )
       else
-        @repository.update!(waiting: @repository.waiting + @number.to_i)
+        @repository.update!(waiting: @repository.waiting + @quantity.to_i)
       end
 
       @order.order_items.create!(
         :product_id => @product_id,
-        :number => @number,
+        :quantity => @quantity,
         :price => @price
       )
 

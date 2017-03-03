@@ -101,14 +101,14 @@
             </tr>
          </thead>
          <tbody>
-
             <% @order_items.each_with_index do |order_item| %>
               <tr>
-                 <td><a href=""><%= order_item.product.name %></a>
+                 <td>
+                   <a href=""><%= order_item.product.name %></a>
                  </td>
                  <td><%="$ #{order_item.price}" %></td>
-                 <td><%= order_item.number %></td>
-                 <td><%="$ #{order_item.price * order_item.number}" %></td>
+                 <td><%= order_item.quantity %></td>
+                 <td><%="$ #{order_item.price * order_item.quantity}" %></td>
               </tr>
             <% end %>
          </tbody>

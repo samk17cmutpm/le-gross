@@ -7,7 +7,7 @@
                <strong>Product Name</strong>
             </th>
             <th>
-               <strong>Number</strong>
+               <strong>Quantity</strong>
             </th>
             <th class="text-center">
                <strong>Waiting</strong>
@@ -21,12 +21,12 @@
           <% @repositories.each_with_index do |repository, index| %>
             <tr>
                <td><%= repository.product.name %></td>
-               <td><%= repository.number %></td>
+               <td><%= repository.quantity %></td>
                <td class="text-center">
                   <span class="label label-info"><%= repository.waiting %></span>
                </td>
                <td class="text-center">
-                  <span class="label label-danger"><%= repository.waiting - repository.number if repository.waiting > repository.number %></span>
+                  <span class="label label-danger"><%= repository.waiting - repository.quantity if repository.waiting > repository.quantity %></span>
                </td>
             </tr>
           <% end %>

@@ -18,7 +18,7 @@ class ImportsController < ApplicationController
 
     ImportOrderItem.create!(
       product_id: @product_id,
-      number: @quantity_of_the_product,
+      quantity: @quantity_of_the_product,
       price: @price_of_the_product,
       status: @status
     )
@@ -36,11 +36,11 @@ class ImportsController < ApplicationController
     if @repository == nil
       Repository.create(
         product_id: @product_id,
-        number: @import_order_item.number,
+        quantity: @import_order_item.number,
         waiting: 0
       )
     else
-      @repository.update!(number: @repository.number + @import_order_item.number)
+      @repository.update!(quantity: @repository.quantity + @import_order_item.quantity)
     end
 
     redirect_to action: 'index'

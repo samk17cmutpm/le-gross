@@ -56,7 +56,7 @@ class PacksController < ApplicationController
             shipment_by: @shipment_by
         )
         # Update Repository
-        @repository.update(number: @repository.quantity - @pack.quantity)
+        @repository.update(quantity: @repository.quantity - @pack.quantity)
       end
 
     end

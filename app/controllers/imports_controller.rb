@@ -36,7 +36,7 @@ class ImportsController < ApplicationController
     if @repository == nil
       Repository.create(
         product_id: @product_id,
-        quantity: @import_order_item.number,
+        quantity: @import_order_item.quantity,
         waiting: 0
       )
     else

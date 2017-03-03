@@ -84,6 +84,8 @@ module LeGross
                                 # Products Controller
                                 'products.js',
                                 'products.css',
+                                'custom/products/products_new.js',
+                                'custom/products/products_edit.js',
                                 # Packs Controller
                                 'packs.js',
                                 'packs.css',

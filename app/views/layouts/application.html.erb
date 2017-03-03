@@ -53,7 +53,7 @@
     <!-- =============== VENDOR SCRIPTS ===============-->
     <%= javascript_include_tag 'base' %>
     <!-- =============== VIEW VENDOR SCRIPTS ===============-->
-    
+
     <%= javascript_include_tag 'forms' %>
 
     <%= javascript_include_tag params[:controller] %>
@@ -78,6 +78,14 @@
 
     <% if controller?('customers') && action?('new') %>
       <%= javascript_include_tag 'custom/customers/customers_new' %>
+    <% end %>
+
+    <% if controller?('products') && action?('new') %>
+      <%= javascript_include_tag 'custom/products/products_new' %>
+    <% end %>
+
+    <% if controller?('products') && action?('show') %>
+      <%= javascript_include_tag 'custom/products/products_edit' %>
     <% end %>
 
     <%= yield :body_area %>

@@ -4,10 +4,13 @@
       <thead>
          <tr>
             <th>
-               <strong>Product Code</strong>
+               <strong>Code</strong>
             </th>
             <th>
-               <strong>Product Name</strong>
+               <strong>Name</strong>
+            </th>
+            <th>
+               <strong>Description</strong>
             </th>
             <th class="text-center">
                <strong>Action</strong>
@@ -19,6 +22,7 @@
             <tr>
                <td><%= product.code %></td>
                <td><%= product.name %></td>
+               <td><%= product.description %></td>
                <td class="text-center">
                   <%= link_to 'Edit', controller: "products", action: "show", id: product.id %>
                </td>

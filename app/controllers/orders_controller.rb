@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
       if @repository == nil
         Repository.create(
           product_id: @product_id,
-          number: 0,
+          quantity: 0,
           waiting: @quantity
         )
       else

@@ -39,8 +39,7 @@
                <td><%= pack.shipment_by %></td>
                <td><span class="label label-info"><%= pack.status %></span></td>
                <td class="text-center">
-                  <%= link_to 'Received', controller: "packs", action: "received", id: pack.id %>
-                  <%= link_to 'Finished', controller: "packs", action: "finished", id: pack.id %>
+                  <%= link_to 'Finished', controller: "packs", action: "finished", id: pack.id if pack.status != "Finished"%>
                </td>
             </tr>
           <% end %>

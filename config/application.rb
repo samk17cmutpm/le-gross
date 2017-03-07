@@ -94,7 +94,10 @@ module LeGross
                                 'customers.js',
                                 'customers.css',
                                 'custom/customers/customers_edit.js',
-                                'custom/customers/customers_new.js'
+                                'custom/customers/customers_new.js',
+                                'fakes.js',
+                                'fakes.css',
+                                'custom/fakes/create_new_fakes.js'
                                 ]
   end
 end

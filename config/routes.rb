@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get   'fakes', to: 'fakes#index'
+
+  get   'fakes/new'
+
+  post  'fakes/create'
+
   get   'customers', to: 'customers#index'
 
   get   'customers/new'

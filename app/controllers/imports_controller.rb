@@ -31,13 +31,14 @@ class ImportsController < ApplicationController
     @import_order_item.update(status: "Done")
 
     @product_id =  @import_order_item.product.id
-    @repository = Repository.find_by(product_id: @product_id)
+    @repository = Repository.find_by(product_id: @product_id, location: "Remote")
 
     if @repository == nil
       Repository.create(
         product_id: @product_id,
         quantity: @import_order_item.quantity,
-        waiting: 0
+        waiting: 0,
+        location: "Remote"
       )
     else
       @repository.update!(quantity: @repository.quantity + @import_order_item.quantity)

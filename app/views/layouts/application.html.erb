@@ -88,6 +88,10 @@
       <%= javascript_include_tag 'custom/products/products_edit' %>
     <% end %>
 
+    <% if controller?('fakes') && action?('new') %>
+      <%= javascript_include_tag 'custom/fakes/create_new_fakes' %>
+    <% end %>
+
     <%= yield :body_area %>
   </body>
 </html>

@@ -27,7 +27,8 @@ class PacksController < ApplicationController
   end
 
   def create
-    @repositories = Repository.all
+    @remote_repositories = Repository.where(location: "Remote")
+    @on_the_way_repositories = Repository.where(location: "On The Way")
     @ids_of_element = params[:ids_of_element].split(",").map { |s| s.to_i }
     @ids_of_element.each do |element|
 
@@ -44,9 +45,11 @@ class PacksController < ApplicationController
       @shipment_by = params["shipment_by_#{element}"]
 
       # Find Product In Repository
-      @repository = @repositories.find_by(product_id: @product_id)
+      @remote_repository = @remote_repositories.find_by(product_id: @product_id)
 
-      if (@repository.quantity >= @quantity.to_i)
+      if (@remote_repository.quantity >= @quantity.to_i)
+
+        # This is for REMOTE REPOSITORY
         @pack = Pack.create!(
             code: @pack_code,
             product_id: @product_id,
@@ -56,7 +59,22 @@ class PacksController < ApplicationController
             shipment_by: @shipment_by
         )
         # Update Repository
-        @repository.update(quantity: @repository.quantity - @pack.quantity)
+        @remote_repository.update(quantity: @remote_repository.quantity - @pack.quantity)
+
+        # This is for ON THE WAY REPOSITORY
+        @on_the_way_repository = @on_the_way_repositories.find_by(product_id: @product_id)
+
+        if @on_the_way_repository != nil
+          @on_the_way_repository.update(quantity: @on_the_way_repository.quantity + @pack.quantity)
+        else
+          Repository.create!(
+            product_id: @product_id,
+            quantity: @pack.quantity,
+            waiting: 0,
+            location: "On The Way"
+          )
+        end
+
       end
 
     end
@@ -67,6 +85,26 @@ class PacksController < ApplicationController
     @pack_id = params[:id]
     @pack = Pack.find_by(id: @pack_id)
     @pack.update(status: "Finished")
+
+    @on_the_way_repositories = Repository.where(location: "On The Way")
+    @local_repositories  = Repository.where(location: "Local")
+
+    @on_the_way_repository = @on_the_way_repositories.find_by(product_id: @pack.product_id)
+
+    @on_the_way_repository.update(quantity: @on_the_way_repository.quantity - @pack.quantity)
+
+    @local_repository = @local_repositories.find_by(product_id: @pack.product_id)
+
+    if @local_repository != nil
+      @local_repository.update(quantity: @local_repository.quantity + @pack.quantity)
+    else
+      Repository.create!(
+        product_id: @pack.product_id,
+        quantity: @pack.quantity,
+        waiting: 0,
+        location: "Local"
+      )
+    end
     redirect_to action: 'index'
   end
 

@@ -58,12 +58,6 @@
                       <th>
                          <strong>Quantity</strong>
                       </th>
-                      <th class="text-center">
-                         <strong>Waiting</strong>
-                      </th>
-                      <th class="text-center">
-                         <strong>Need To Buy More</strong>
-                      </th>
                    </tr>
                 </thead>
                 <tbody>
@@ -71,12 +65,6 @@
                       <tr>
                          <td><%= repository.product.name %></td>
                          <td><%= repository.quantity %></td>
-                         <td class="text-center">
-                            <span class="label label-info"><%= repository.waiting %></span>
-                         </td>
-                         <td class="text-center">
-                            <span class="label label-danger"><%= repository.waiting - repository.quantity if repository.waiting > repository.quantity %></span>
-                         </td>
                       </tr>
                     <% end %>
                 </tbody>
@@ -95,12 +83,6 @@
                      <th>
                         <strong>Quantity</strong>
                      </th>
-                     <th class="text-center">
-                        <strong>Waiting</strong>
-                     </th>
-                     <th class="text-center">
-                        <strong>Need To Buy More</strong>
-                     </th>
                   </tr>
                </thead>
                <tbody>
@@ -108,12 +90,6 @@
                      <tr>
                         <td><%= repository.product.name %></td>
                         <td><%= repository.quantity %></td>
-                        <td class="text-center">
-                           <span class="label label-info"><%= repository.waiting %></span>
-                        </td>
-                        <td class="text-center">
-                           <span class="label label-danger"><%= repository.waiting - repository.quantity if repository.waiting > repository.quantity %></span>
-                        </td>
                      </tr>
                    <% end %>
                </tbody>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get   'deliveries/new'
+
+  get   'deliveries', to: 'deliveries#index'
+
+  get   'deliveries/show'
+
+  get   'deliveries/create'
+
   get   'fakes', to: 'fakes#index'
 
   get   'fakes/new'

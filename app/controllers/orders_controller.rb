@@ -55,7 +55,8 @@ class OrdersController < ApplicationController
       @order.order_items.create!(
         :product_id => @product_id,
         :quantity => @quantity,
-        :price => @price
+        :price => @price,
+        :status => "Waiting"
       )
 
       @order.update(total_price: @total_price)

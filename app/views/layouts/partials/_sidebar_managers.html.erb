@@ -142,6 +142,26 @@
                </li>
             </ul>
           </li>
+
+          <li class="<%= 'active' if controller?('deliveries')%>">
+            <a href="#deliveries" title="Deliveries" data-toggle="collapse">
+               <em class="icon-note"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Deliveries</span>
+            </a>
+            <ul id="deliveries" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Deliveries</li>
+               <li class="<%= 'active' if controller?('deliveries') && action?('index') %>">
+                  <a href="/deliveries" title="Deliveries">
+                     <span>Deliveries</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('deliveries') && action?('new') %>">
+                  <a href="/deliveries/new" title="Add New Delivery">
+                     <span>Add New Delivery</span>
+                  </a>
+               </li>
+            </ul>
+          </li>
       </ul>
       <!-- END sidebar nav-->
    </nav>

@@ -105,6 +105,7 @@ class PacksController < ApplicationController
         location: "Local"
       )
     end
+
     redirect_to action: 'index'
   end
 

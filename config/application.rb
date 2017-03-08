@@ -97,7 +97,10 @@ module LeGross
                                 'custom/customers/customers_new.js',
                                 'fakes.js',
                                 'fakes.css',
-                                'custom/fakes/create_new_fakes.js'
+                                'custom/fakes/create_new_fakes.js',
+                                # Deliveries Controller
+                                'deliveries.js',
+                                'deliveries.css'
                                 ]
   end
 end

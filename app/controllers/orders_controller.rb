@@ -40,13 +40,14 @@ class OrdersController < ApplicationController
 
       @total_price = @total_price + (@quantity.to_i * @price.to_i)
 
-      @repository = Repository.find_by(product_id: @product_id)
+      @repository = Repository.find_by(product_id: @product_id, location: "Remote")
 
       if @repository == nil
         Repository.create(
           product_id: @product_id,
           quantity: 0,
-          waiting: @quantity
+          waiting: @quantity,
+          location: "Remote"
         )
       else
         @repository.update!(waiting: @repository.waiting + @quantity.to_i)

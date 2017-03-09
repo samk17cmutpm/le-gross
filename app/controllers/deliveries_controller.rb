@@ -3,7 +3,7 @@ class DeliveriesController < ApplicationController
   end
 
   def index
-    @order_items = OrderItem.all
+    @order_items = OrderItem.where(status: "Waiting", can_delivery: true)
   end
 
   def show

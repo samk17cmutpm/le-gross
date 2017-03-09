@@ -98,17 +98,19 @@
                <th>Price</th>
                <th>Quantity</th>
                <th>Total</th>
+               <th>Status</th>
             </tr>
          </thead>
          <tbody>
             <% @order_items.each_with_index do |order_item| %>
               <tr>
-                 <td>
-                   <a href=""><%= order_item.product.name %></a>
-                 </td>
-                 <td><%="$ #{order_item.price}" %></td>
-                 <td><%= order_item.quantity %></td>
-                 <td><%="$ #{order_item.price * order_item.quantity}" %></td>
+                  <td>
+                    <a href=""><%= order_item.product.name %></a>
+                  </td>
+                  <td><%="$ #{order_item.price}" %></td>
+                  <td><%= order_item.quantity %></td>
+                  <td><%="$ #{order_item.price * order_item.quantity}" %></td>
+                  <td><%= order_item.status %></td>
               </tr>
             <% end %>
          </tbody>

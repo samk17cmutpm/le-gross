@@ -36,14 +36,14 @@
 
     $(products_list_element).on('change', function() {
       temp_repository = find_object_by_id_in_a_list(repositories_data, this.value);
-      update_max_for_input(quantity_of_the_product_element, temp_repository.number);
-      if($(quantity_of_the_product_element).val() > temp_repository.number)
-        $(quantity_of_the_product_element).val(temp_repository.number)
+      update_max_for_input(quantity_of_the_product_element, temp_repository.quantity);
+      if($(quantity_of_the_product_element).val() > temp_repository.quantity)
+        $(quantity_of_the_product_element).val(temp_repository.quantity)
     });
 
     $(quantity_of_the_product_element).on('change', function() {
-      if($(quantity_of_the_product_element).val() > temp_repository.number)
-        $(quantity_of_the_product_element).val(temp_repository.number);
+      if($(quantity_of_the_product_element).val() > temp_repository.quantity)
+        $(quantity_of_the_product_element).val(temp_repository.quantity);
 
       if($(quantity_of_the_product_element).val() < 1)
         $(quantity_of_the_product_element).val(1);
@@ -109,14 +109,14 @@
 
       $(select_option_element).on('change', function() {
         temp_repository_local = find_object_by_id_in_a_list(repositories_data, this.value);
-        update_max_for_input(quantity_of_the_product_element, temp_repository_local.number);
-        if($(quantity_of_the_product_element).val() > temp_repository_local.number)
-          $(quantity_of_the_product_element).val(temp_repository_local.number)
+        update_max_for_input(quantity_of_the_product_element, temp_repository_local.quantity);
+        if($(quantity_of_the_product_element).val() > temp_repository_local.quantity)
+          $(quantity_of_the_product_element).val(temp_repository_local.quantity)
       });
 
       $(quantity_of_the_product_element).on('change', function() {
-        if($(quantity_of_the_product_element).val() > temp_repository_local.number)
-          $(quantity_of_the_product_element).val(temp_repository_local.number);
+        if($(quantity_of_the_product_element).val() > temp_repository_local.quantity)
+          $(quantity_of_the_product_element).val(temp_repository_local.quantity);
 
         if($(quantity_of_the_product_element).val() < 1)
           $(quantity_of_the_product_element).val(1);

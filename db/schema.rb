@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308084629) do
+ActiveRecord::Schema.define(version: 20170309022422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20170308084629) do
     t.datetime "updated_at",    null: false
     t.integer  "repository_id"
     t.string   "status"
+    t.boolean  "can_delivery"
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
     t.index ["repository_id"], name: "index_order_items_on_repository_id", using: :btree

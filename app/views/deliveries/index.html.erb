@@ -40,7 +40,7 @@
                   <span class="label label-info"><%= order_item.order.code %></span>
                </td>
                <td class="text-center">
-                  <%= link_to 'Deliveried', controller: "deliveries", action: "show", id: order_item.id %>
+                  <%= link_to 'Deliveried', controller: "deliveries", action: "delivery", id: order_item.id %>
                </td>
             </tr>
           <% end %>

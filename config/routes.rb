@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get   'deliveries', to: 'deliveries#index'
 
+  get   'deliveries/delivery'
+
   get   'deliveries/show'
 
   get   'deliveries/create'

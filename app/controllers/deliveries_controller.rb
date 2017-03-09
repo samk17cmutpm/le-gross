@@ -48,9 +48,11 @@ class DeliveriesController < ApplicationController
     end
 
     @remote_repository = Repository.find_by(product_id: @order_item.product_id, location: "Remote")
-    @remote_repository.update!(
-      waiting: @remote_repository.waiting - @order_item.quantity
-    )
+    if @remote_repository.waiting >=  @order_item.quantity
+      @remote_repository.update!(
+        waiting: @remote_repository.waiting - @order_item.quantity
+      )
+    end
 
     redirect_to action: 'index'
   end

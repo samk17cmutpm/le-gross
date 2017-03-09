@@ -40,24 +40,41 @@ class OrdersController < ApplicationController
 
       @total_price = @total_price + (@quantity.to_i * @price.to_i)
 
-      @repository = Repository.find_by(product_id: @product_id, location: "Remote")
+      @remote_repository = Repository.find_by(product_id: @product_id, location: "Remote")
 
-      if @repository == nil
-        Repository.create(
-          product_id: @product_id,
-          quantity: 0,
-          waiting: @quantity,
-          location: "Remote"
-        )
-      else
-        @repository.update!(waiting: @repository.waiting + @quantity.to_i)
+      @local_repository = Repository.find_by(product_id: @product_id, location: "Local")
+
+      if @local_repository != nil
+        if @quantity.to_i < @local_repository.quantity
+          @can_delivery = true
+          @local_repository_id = @local_repository.id
+        else
+          @can_delivery = false
+          @local_repository_id = nil
+        end
       end
+
+      if !@can_delivery
+        if @remote_repository == nil
+          Repository.create(
+            product_id: @product_id,
+            quantity: 0,
+            waiting: @quantity,
+            location: "Remote"
+          )
+        else
+          @remote_repository.update!(waiting: @remote_repository.waiting + @quantity.to_i)
+        end
+      end
+
 
       @order.order_items.create!(
         :product_id => @product_id,
         :quantity => @quantity,
         :price => @price,
-        :status => "Waiting"
+        :status => "Waiting",
+        :can_delivery => @can_delivery,
+        :repository_id => @local_repository_id
       )
 
       @order.update(total_price: @total_price)

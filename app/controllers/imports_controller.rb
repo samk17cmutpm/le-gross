@@ -2,7 +2,7 @@ class ImportsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @import_order_items = ImportOrderItem.all
+    @import_order_items = ImportOrderItem.all.includes(:product)
   end
 
   def new
@@ -28,9 +28,9 @@ class ImportsController < ApplicationController
 
   def update_status
     @import_order_item = ImportOrderItem.find_by(id: params[:id])
-    @import_order_item.update(status: "Done")
+    @import_order_item.update!(status: "Done")
 
-    @product_id =  @import_order_item.product.id
+    @product_id =  @import_order_item.product_id
     @repository = Repository.find_by(product_id: @product_id, location: "Remote")
 
     if @repository == nil

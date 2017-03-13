@@ -7,14 +7,14 @@
         <div class="col-md-12">
           <div class="container-xl">
              <!-- Checkout Process-->
-                <div id="accordion" class="panel-group">
+                <div  class="panel-group">
                    <div class="panel b">
                       <div class="panel-heading">
-                         <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse6">Please Select The Product</a>
+                         <h4 class="panel-title"><a>Please Select The Product</a>
                          </h4>
                       </div>
-                      <div id="acc1collapse6" class="panel-collapse collapse in">
-                         <div id="collapse06" class="panel-body">
+                      <div class="panel-collapse collapse in">
+                         <div  class="panel-body">
                             <div class="table-responsive">
                                <table class="table">
                                   <colgroup>
@@ -81,5 +81,31 @@
           </div>
         </div>
      </form>
+  </div>
+  <div class="panel b">
+    <div class="panel-heading">
+      <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse4">Repository In USA</a>
+      </h4>
+    </div>
+    <div id="acc1collapse4" class="panel-collapse collapse">
+      <div id="collapse04" class="panel-body">
+        <table class="table">
+            <thead class="bg-gray-lighter">
+               <tr>
+                  <th>Product</th>
+                  <th>Quantity</th>
+               </tr>
+            </thead>
+            <tbody>
+              <% @repositories.each_with_index do |repository, index| %>
+                <tr>
+                   <td><%= repository.product.name %></td>
+                   <td><%= repository.quantity %></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 <% end %>

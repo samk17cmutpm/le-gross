@@ -8,6 +8,7 @@ class ImportsController < ApplicationController
   def new
     @products = Product.all
     gon.products = @products.to_json
+    @remote_repositories = Repository.where(location: "Remote").includes(:product)
   end
 
   def create

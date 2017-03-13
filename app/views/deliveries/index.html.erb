@@ -29,7 +29,7 @@
          </tr>
       </thead>
       <tbody>
-          <% @order_items.each_with_index do |order_item, index| %>
+          <% @order_items_can_delivery.each_with_index do |order_item, index| %>
             <tr>
                <td><%= order_item.order.customer.first_name %></td>
                <td><%= order_item.product.name %></td>
@@ -46,4 +46,53 @@
           <% end %>
       </tbody>
    </table>
+</div>
+
+<div class="panel b">
+  <div class="panel-heading">
+    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse4">Waiting Orders</a>
+    </h4>
+  </div>
+  <div id="acc1collapse4" class="panel-collapse collapse">
+    <div id="collapse04" class="panel-body">
+      <table class="table">
+          <thead class="bg-gray-lighter">
+             <tr>
+               <th style="width:80px">
+                  <strong>Client</strong>
+               </th>
+               <th>
+                  <strong>Product</strong>
+               </th>
+               <th>
+                  <strong>Quantity</strong>
+               </th>
+               <th>
+                  <strong>Price</strong>
+               </th>
+               <th>
+                  <strong>Purchased On</strong>
+               </th>
+               <th class="text-center">
+                  <strong>Belongs To Order</strong>
+               </th>
+             </tr>
+          </thead>
+          <tbody>
+            <% @order_items.each_with_index do |order_item, index| %>
+              <tr>
+                 <td><%= order_item.order.customer.first_name %></td>
+                 <td><%= order_item.product.name %></td>
+                 <td><%= order_item.quantity %></td>
+                 <td><%= order_item.price %></td>
+                 <td><%= order_item.order.date %></td>
+                 <td class="text-center">
+                    <span class="label label-info"><%= order_item.order.code %></span>
+                 </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
 </div>

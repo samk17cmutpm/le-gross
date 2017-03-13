@@ -32,19 +32,21 @@ class OrdersController < ApplicationController
 
     # Creating New Oder Items
     @ids_of_element = params[:ids_of_element].split(",").map { |s| s.to_i }
+
     @ids_of_element.each do |element|
 
+      # params from clients
       @product_id = params["product_id_#{element}"]
       @quantity = params["quantity_of_the_product_#{element}"]
       @price = params["price_of_the_product_#{element}"]
 
       @total_price = @total_price + (@quantity.to_i * @price.to_i)
 
+      # get repository in US and Viet Nam
       @remote_repository = Repository.find_by(product_id: @product_id, location: "Remote")
-
       @local_repository = Repository.find_by(product_id: @product_id, location: "Local")
 
-      if @local_repository != nil
+      if !@local_repository.nil?
         if @quantity.to_i < @local_repository.quantity
           @can_delivery = true
           @local_repository_id = @local_repository.id
@@ -55,8 +57,8 @@ class OrdersController < ApplicationController
       end
 
       if !@can_delivery
-        if @remote_repository == nil
-          Repository.create(
+        if @remote_repository.nil?
+          @remote_repository = Repository.create(
             product_id: @product_id,
             quantity: 0,
             waiting: @quantity,

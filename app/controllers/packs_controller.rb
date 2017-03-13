@@ -96,7 +96,7 @@ class PacksController < ApplicationController
 
     @local_repository = @local_repositories.find_by(product_id: @pack.product_id)
 
-    if @local_repository != nil
+    if !@local_repository.nil?
       @local_repository.update(quantity: @local_repository.quantity + @pack.quantity)
     else
       @local_repository = Repository.create!(

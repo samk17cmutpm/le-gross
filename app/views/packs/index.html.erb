@@ -33,7 +33,9 @@
           <% @packs.each_with_index do |pack, index| %>
             <tr>
                <td><%= pack.code %></td>
-               <td><%= pack.product.name %></td>
+               <td>
+                  <%= link_to "#{pack.product.name}", controller: "products", action: "show", id: pack.product.id %>
+               </td>
                <td><%= pack.quantity %></td>
                <td><%= pack.note %></td>
                <td><%= pack.shipment_by %></td>

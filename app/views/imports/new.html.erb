@@ -83,10 +83,12 @@
                   <% @remote_repositories.each_with_index do |repository, index| %>
                     <% if repository.waiting > repository.quantity %>
                       <tr>
-                        <td><%= repository.product.name %></td>
+                        <td>
+                          <%= link_to "#{repository.product.name}", controller: "products", action: "show", id: repository.product.id %>
+                        </td>
                         <td><%= repository.quantity %></td>
                         <td class="text-center">
-                           <span class="label label-danger"><%= repository.waiting %></span>
+                          <span class="label label-danger"><%= repository.waiting %></span>
                         </td>
                       </tr>
                     <% end %>

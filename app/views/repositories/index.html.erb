@@ -33,7 +33,9 @@
                  <tbody>
                      <% @remote_repositories.each_with_index do |repository, index| %>
                        <tr>
-                          <td><%= repository.product.name %></td>
+                          <td>
+                            <%= link_to "#{repository.product.name}", controller: "products", action: "show", id: repository.product.id %>
+                          </td>
                           <td><%= repository.quantity %></td>
                           <td class="text-center">
                              <span class="label label-info"><%= repository.waiting %></span>
@@ -63,7 +65,9 @@
                 <tbody>
                     <% @on_the_way_repositories.each_with_index do |repository, index| %>
                       <tr>
-                         <td><%= repository.product.name %></td>
+                         <td>
+                           <%= link_to "#{repository.product.name}", controller: "products", action: "show", id: repository.product.id %>
+                         </td>
                          <td><%= repository.quantity %></td>
                       </tr>
                     <% end %>
@@ -87,10 +91,12 @@
                </thead>
                <tbody>
                    <% @local_repositories.each_with_index do |repository, index| %>
-                     <tr>
-                        <td><%= repository.product.name %></td>
+                      <tr>
+                        <td>
+                          <%= link_to "#{repository.product.name}", controller: "products", action: "show", id: repository.product.id %>
+                        </td>
                         <td><%= repository.quantity %></td>
-                     </tr>
+                      </tr>
                    <% end %>
                </tbody>
              </table>

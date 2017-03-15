@@ -34,7 +34,9 @@
             <tr>
                <td><%= order.id %></td>
                <td><%= order.date %></td>
-               <td><%= "#{order.customer.first_name} #{order.customer.last_name}"%></td>
+               <td>
+                 <%= link_to "#{order.customer.first_name} #{order.customer.last_name}", controller: "customers", action: "edit", id: order.customer.id %>
+               </td>
                <td><%= order.paid_amount %></td>
                <td>____</td>
                <td class="text-center">

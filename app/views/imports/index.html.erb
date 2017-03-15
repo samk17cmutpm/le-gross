@@ -30,7 +30,9 @@
           <% @import_order_items.each_with_index do |import_order_item, index| %>
             <tr>
                <td><%= import_order_item.id %></td>
-               <td><%= import_order_item.product.name %></td>
+               <td>
+                  <%= link_to "#{import_order_item.product.name}", controller: "products", action: "show", id: import_order_item.product.id %>
+               </td>
                <td><%= import_order_item.price %></td>
                <td><%= import_order_item.quantity %></td>
                <td class="text-center">

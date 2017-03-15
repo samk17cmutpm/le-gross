@@ -99,7 +99,9 @@
             <tbody>
               <% @repositories.each_with_index do |repository, index| %>
                 <tr>
-                   <td><%= repository.product.name %></td>
+                   <td>
+                      <%= link_to "#{repository.product.name}", controller: "products", action: "show", id: repository.product.id %>
+                   </td>
                    <td><%= repository.quantity %></td>
                 </tr>
               <% end %>

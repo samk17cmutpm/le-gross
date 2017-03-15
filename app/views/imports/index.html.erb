@@ -36,7 +36,10 @@
                <td><%= import_order_item.price %></td>
                <td><%= import_order_item.quantity %></td>
                <td class="text-center">
-                  <span class="label label-info"><%= import_order_item.status %></span>
+                 <% case import_order_item.status
+                      when "Done" %><span class="label label-info"><%= import_order_item.status %></span>
+                   <% when "Waiting" %><span class="label label-danger"><%= import_order_item.status %></span>
+                 <% end %>
                </td>
                <td class="text-center">
                  <%= link_to 'Done', controller: "imports", action: "update_status", id: import_order_item.id if import_order_item.status != "Done" %>

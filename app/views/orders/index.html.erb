@@ -40,7 +40,11 @@
                <td><%= order.paid_amount %></td>
                <td>____</td>
                <td class="text-center">
-                  <span class="label label-info"><%= order.status %></span>
+                 <% case order.status
+                      when "Deliveried" %><span class="label label-info"><%= order.status %></span>
+                   <% when "Waiting" %><span class="label label-danger"><%= order.status %></span>
+                   <% when "Paid" %><span class="label label-success"><%= order.status %></span>
+                 <% end %>
                </td>
                <td class="text-center">
                  <%= link_to 'View', controller: "orders", action: "show", id: order.id %>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get   'pays', to: 'pays#index'
+
+  get   'pays/show'
+
+  get   'pays/make_it_paid'
+
+  get   'pays/paids'
+
   get   'deliveries/new'
 
   get   'deliveries', to: 'deliveries#index'

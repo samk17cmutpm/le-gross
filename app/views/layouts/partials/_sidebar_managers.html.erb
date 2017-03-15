@@ -125,7 +125,7 @@
 
           <li class="<%= 'active' if controller?('packs')%>">
             <a href="#packs" title="Packs" data-toggle="collapse">
-               <em class="icon-note"></em>
+               <em class="icon-handbag"></em>
                <span data-localize="sidebar.nav.DASHBOARD">Packs</span>
             </a>
             <ul id="packs" class="nav sidebar-subnav collapse">
@@ -145,7 +145,7 @@
 
           <li class="<%= 'active' if controller?('deliveries')%>">
             <a href="#deliveries" title="Deliveries" data-toggle="collapse">
-               <em class="icon-note"></em>
+               <em class="icon-plane"></em>
                <span data-localize="sidebar.nav.DASHBOARD">Deliveries</span>
             </a>
             <ul id="deliveries" class="nav sidebar-subnav collapse">
@@ -158,6 +158,26 @@
                <li class="<%= 'active' if controller?('deliveries') && action?('new') %>">
                   <a href="/deliveries/new" title="Add New Delivery">
                      <span>Add New Delivery</span>
+                  </a>
+               </li>
+            </ul>
+          </li>
+
+          <li class="<%= 'active' if controller?('pays')%>">
+            <a href="#pays" title="Pays" data-toggle="collapse">
+               <em class="icon-wallet"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Pays</span>
+            </a>
+            <ul id="pays" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Pays</li>
+               <li class="<%= 'active' if controller?('pays') && action?('index') %>">
+                  <a href="/pays" title="Pays">
+                     <span>Pays</span>
+                  </a>
+               </li>
+               <li class="<%= 'active' if controller?('pays') && action?('paids') %>">
+                  <a href="/pays/paids" title="Paids">
+                     <span>Paids</span>
                   </a>
                </li>
             </ul>

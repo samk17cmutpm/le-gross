@@ -19,9 +19,12 @@ class OrdersController < ApplicationController
     # Paid Amount By Customer
     @paid_amount = params[:paid_amount]
 
+    @number = Array.new(2){[*"0".."9"].sample}.join
+    @characters = Array.new(8){[*"A".."Z"].sample}.join
+
     # Creating New Order
     @order = Order.create!(
-      :code => Faker::Code.imei,
+      :code => @number + @characters,
       :customer_id => @customer_id,
       :date => Date.today.strftime("%a, %e %b %Y"),
       :status => "Waiting",

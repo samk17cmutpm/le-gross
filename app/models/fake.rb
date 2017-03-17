@@ -1,2 +1,0 @@
-class Fake < ApplicationRecord
-end

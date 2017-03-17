@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get   'dashboards', to: 'dashboards#index'
+
+  get   'dashboards/debts'
+
+  get   'dashboards/not_received_feedback'
+
   get   'pays', to: 'pays#index'
 
   get   'pays/show'

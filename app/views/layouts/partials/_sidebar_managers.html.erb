@@ -28,6 +28,22 @@
             <span>Categories</span>
           </li>
 
+          <li class="<%= 'active' if controller?('dashboards')%>">
+            <a href="#dashboards" title="Dashboards" data-toggle="collapse">
+               <em class="icon-user"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Dashboards</span>
+            </a>
+            <ul id="dashboards" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Dashboards</li>
+               <li class="<%= 'active' if controller?('dashboards') && action?('debts') %>">
+                  <a href="/dashboards/debts" title="Debts">
+                     <span>Debts</span>
+                  </a>
+               </li>
+
+            </ul>
+          </li>
+
           <li class="<%= 'active' if controller?('customers')%>">
             <a href="#customers" title="Customers" data-toggle="collapse">
                <em class="icon-user"></em>

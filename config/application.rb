@@ -102,7 +102,9 @@ module LeGross
                                 'deliveries.js',
                                 'deliveries.css',
                                 'pays.js',
-                                'pays.css'
+                                'pays.css',
+                                'dashboards.js',
+                                'dashboards.css'
                                 ]
   end
 end

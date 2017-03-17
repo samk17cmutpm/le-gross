@@ -36,15 +36,15 @@ class DeliveriesController < ApplicationController
 
     @order = Order.find_by(id: @order_item.order_id)
     @order_items = @order.order_items
-    @is_order_done = true
+    @is_order_deliveried_all = true
     @order_items.each do |order_item|
       if order_item.status == "Waiting"
-        @is_order_done = false
+        @is_order_deliveried_all = false
         break
       end
     end
 
-    if @is_order_done
+    if @is_order_deliveried_all
       @order.update!(status: "Deliveried")
     end
 

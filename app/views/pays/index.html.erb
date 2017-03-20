@@ -31,21 +31,21 @@
       <tbody>
         <% @order_items.each_with_index do |order_item, index| %>
           <tr>
-             <td>
+              <td>
                 <%= link_to "#{order_item.order.customer.first_name} #{order_item.order.customer.last_name}", controller: "customers", action: "edit", id: order_item.order.customer.id %>
-             </td>
-             <td>
+              </td>
+              <td>
                 <%= link_to "#{order_item.product.name}", controller: "products", action: "show", id: order_item.product.id %>
-             </td>
-             <td><%= order_item.quantity %></td>
-             <td><%= order_item.price %></td>
-             <td><%= order_item.order.date %></td>
-             <td class="text-center">
+              </td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.price %></td>
+              <td><%= order_item.order.date %></td>
+              <td class="text-center">
                 <%= link_to "##{order_item.order.code}", controller: "orders", action: "show", id: order_item.order.id %>
-             </td>
-             <td class="text-center">
+              </td>
+              <td class="text-center">
                 <%= link_to 'Pay', controller: "pays", action: "make_it_paid", id: order_item.id %>
-             </td>
+              </td>
           </tr>
         <% end %>
       </tbody>

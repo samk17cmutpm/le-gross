@@ -17,15 +17,18 @@ class DeliveriesController < ApplicationController
     @order_item = OrderItem.find_by(id: params[:id])
     @local_repository =  Repository.find_by(id: @order_item.repository_id, location: "Local")
 
+    # Update That This Order Has Been Deliveried
     @order_item.update!(
       status: "Deliveried"
     )
+
+    # Update The Local Repository
     @local_repository.update!(
       quantity: @local_repository.quantity - @order_item.quantity
     )
 
+    # Update The Number Of The Waiting Products
     @waiting_order_items = OrderItem.where(product_id: @order_item.product_id, status: "Waiting")
-
     @waiting_order_items.each do |waiting_order_item|
       if waiting_order_item.quantity <= @local_repository.quantity
         waiting_order_item.update(repository_id: @local_repository.id, can_delivery: true)
@@ -34,6 +37,7 @@ class DeliveriesController < ApplicationController
       end
     end
 
+    # Update Staus For The Parent Order
     @order = Order.find_by(id: @order_item.order_id)
     @order_items = @order.order_items
     @is_order_deliveried_all = true
@@ -48,6 +52,7 @@ class DeliveriesController < ApplicationController
       @order.update!(status: "Deliveried")
     end
 
+    # Update The Remote Repository
     @remote_repository = Repository.find_by(product_id: @order_item.product_id, location: "Remote")
     if @remote_repository.waiting >=  @order_item.quantity
       @remote_repository.update!(
@@ -57,4 +62,6 @@ class DeliveriesController < ApplicationController
 
     redirect_to action: 'index'
   end
+
+  private
 end

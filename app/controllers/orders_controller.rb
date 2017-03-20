@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all.includes(:customer)
+    @order_items = OrderItem.all
   end
 
   def create
@@ -19,12 +19,12 @@ class OrdersController < ApplicationController
     # Paid Amount By Customer
     @paid_amount = params[:paid_amount]
 
-    @number = Array.new(2){[*"0".."9"].sample}.join
-    @characters = Array.new(8){[*"A".."Z"].sample}.join
+    @number_for_order = Array.new(6){[*"0".."9"].sample}.join
+    @characters_for_order = Array.new(2){[*"A".."Z"].sample}.join
 
     # Creating New Order
     @order = Order.create!(
-      :code => @number + @characters,
+      :code => @characters_for_order + @number_for_order,
       :customer_id => @customer_id,
       :date => Date.today.strftime("%a, %e %b %Y"),
       :status => "Waiting",
@@ -72,6 +72,9 @@ class OrdersController < ApplicationController
         end
       end
 
+      # Generate code for Order Item
+      @number_for_order_item = Array.new(6){[*"0".."9"].sample}.join
+      @characters_for_order_item = Array.new(2){[*"A".."Z"].sample}.join
 
       @order.order_items.create!(
         :product_id => @product_id,
@@ -79,7 +82,9 @@ class OrdersController < ApplicationController
         :price => @price,
         :status => "Waiting",
         :can_delivery => @can_delivery,
-        :repository_id => @local_repository_id
+        :repository_id => @local_repository_id,
+        :code => @characters_for_order_item + @number_for_order_item,
+        :date => Date.today.strftime("%a, %e %b %Y")
       )
 
       @order.update(total_price: @total_price)

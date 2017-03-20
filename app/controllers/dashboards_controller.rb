@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+
   def index
   end
 
@@ -8,4 +9,5 @@ class DashboardsController < ApplicationController
 
   def not_received_feedback
   end
+  
 end

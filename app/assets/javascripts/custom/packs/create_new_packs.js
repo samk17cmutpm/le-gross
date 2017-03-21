@@ -70,10 +70,9 @@
 
       params_of_signal.push(inputs_order);
 
-      $(inputs_element).append('<tr><td class="order-item-content"><select id="products_list_' + inputs_order + '" class="form-control wd-xl" name="product_id_'+ inputs_order +'" ></select></td><td class="order-qty"><input type="number" name="quantity_of_the_product_'+ inputs_order +'" value="1" min="1" max="'+ repositories_data[0].quantity +'" class="form-control" /></td><td class="order-qty"><select id="shipment_by_list_'+ inputs_order +'" class="form-control wd-xl" name="shipment_by_'+ inputs_order +'"></select></td><td class="order-qty"><input type="text" name="note_of_the_product_'+ inputs_order +'" class="form-control" /></td><td class="order-total"><button type="button" id="remove_the_product_' + inputs_order + '" class="btn btn-sm btn-danger"><em class="fa fa-trash"></em></button></td></tr>');
+      $(inputs_element).append('<tr><td class="order-item-content"><select id="products_list_' + inputs_order + '" class="form-control wd-xl" name="product_id_'+ inputs_order +'" ></select></td><td class="order-qty"><input type="number" name="quantity_of_the_product_'+ inputs_order +'" value="1" min="1" max="'+ repositories_data[0].quantity +'" class="form-control" /></td><td class="order-qty"><input type="text" name="note_of_the_product_'+ inputs_order +'" class="form-control" /></td><td class="order-total"><button type="button" id="remove_the_product_' + inputs_order + '" class="btn btn-sm btn-danger"><em class="fa fa-trash"></em></button></td></tr>');
 
       var select_option_element = $("#products_list_" + inputs_order);
-      var shipment_by_list_element = $("#shipment_by_list_" + inputs_order);
       var remove_the_product_element = $("#remove_the_product_" + inputs_order);
       var quantity_of_the_product_element = $("input[name=quantity_of_the_product_"+inputs_order+"]");
 
@@ -88,24 +87,13 @@
 
       });
 
-      $.each(shipment_by_list_data, function(key, value) {
-               $(shipment_by_list_element)
-                   .append($('<option class="form-control"></option>')
-                   .attr("value",value)
-                   .text(value));
-
-      });
 
       $(select_option_element).select2({
             placeholder: 'Select a state',
             allowClear: false,
             theme: 'bootstrap'
       });
-      $(shipment_by_list_element).select2({
-            placeholder: 'Select a state',
-            allowClear: false,
-            theme: 'bootstrap'
-      });
+      
 
       $(select_option_element).on('change', function() {
         temp_repository_local = find_object_by_id_in_a_list(repositories_data, this.value);

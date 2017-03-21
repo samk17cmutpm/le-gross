@@ -10,10 +10,7 @@
                <strong>Code</strong>
             </th>
             <th>
-               <strong>Product Name</strong>
-            </th>
-            <th>
-               <strong>Quantity</strong>
+               <strong>Packaged On</strong>
             </th>
             <th>
                <strong>Note</strong>
@@ -33,20 +30,18 @@
           <% @packs.each_with_index do |pack, index| %>
             <tr>
                <td><%= pack.code %></td>
-               <td>
-                  <%= link_to "#{pack.product.name}", controller: "products", action: "show", id: pack.product.id %>
-               </td>
-               <td><%= pack.quantity %></td>
+               <td><%= pack.date %></td>
                <td><%= pack.note %></td>
                <td><%= pack.shipment_by %></td>
                <td>
                   <% case pack.status
-                  when "Finished" %><span class="label label-success"><%= pack.status %></span>
+                       when "Finished" %><span class="label label-success"><%= pack.status %></span>
                     <% when "On The Way" %><span class="label label-danger"><%= pack.status %></span>
                   <% end %>
                </td>
                <td class="text-center">
                   <%= link_to 'Finished', controller: "packs", action: "finished", id: pack.id if pack.status != "Finished"%>
+                  <%= link_to 'View', controller: "packs", action: "show", id: pack.id %>
                </td>
             </tr>
           <% end %>

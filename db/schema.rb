@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320070620) do
+ActiveRecord::Schema.define(version: 20170321021528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,16 +135,28 @@ ActiveRecord::Schema.define(version: 20170320070620) do
     t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   end
 
+  create_table "pack_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "pack_id"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "shipment_by"
+    t.string   "code"
+    t.string   "note"
+    t.index ["pack_id"], name: "index_pack_items_on_pack_id", using: :btree
+    t.index ["product_id"], name: "index_pack_items_on_product_id", using: :btree
+  end
+
   create_table "packs", force: :cascade do |t|
     t.integer  "quantity"
-    t.integer  "product_id"
     t.string   "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "note"
     t.string   "shipment_by"
     t.string   "code"
-    t.index ["product_id"], name: "index_packs_on_product_id", using: :btree
+    t.date     "date"
   end
 
   create_table "products", force: :cascade do |t|
@@ -175,5 +187,7 @@ ActiveRecord::Schema.define(version: 20170320070620) do
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "repositories"
   add_foreign_key "orders", "customers"
+  add_foreign_key "pack_items", "packs"
+  add_foreign_key "pack_items", "products"
   add_foreign_key "repositories", "products"
 end

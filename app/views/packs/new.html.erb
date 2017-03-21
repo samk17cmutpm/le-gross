@@ -4,7 +4,27 @@
 <% else %>
   <div class="row">
       <form method="post" action="create" novalidate="novalidate">
-        <div class="col-md-12">
+        <div class="col-md-3">
+           <div class="panel b">
+              <div class="panel-heading bb">
+                 <h4 class="panel-title">Please Select Shipment By</h4>
+              </div>
+              <div class="panel-body bt">
+                <select id="shipment_by_list_0" class="form-control wd-xl" name="shipment_by" >
+                  <% @shipment_by_list.each do |shipment_by| %>
+                     <option class="form-control" value="<%= shipment_by %>"><%= shipment_by %></option>
+                  <% end %>
+                </select>
+              </div>
+              <div class="panel-heading bb">
+                 <h4 class="panel-title">Note</h4>
+              </div>
+              <div class="panel-body bt">
+                <input type="text" name="note" class="form-control" />
+              </div>
+           </div>
+        </div>
+        <div class="col-md-9">
           <div class="container-xl">
              <!-- Checkout Process-->
                 <div  class="panel-group">
@@ -25,14 +45,13 @@
                                      <tr>
                                         <th class="wd-xl">Product Name</th>
                                         <th class="wd-xl">Quantity</th>
-                                        <th class="wd-xl">Shipment By</th>
                                         <th class="wd-xl">Note</th>
                                         <th></th>
                                      </tr>
                                   </thead>
                                   <tfoot>
                                     <tr>
-                                      <td colspan="4"></td>
+                                      <td colspan="3"></td>
                                       <td colspan="1" >
                                         <button type="button" class="btn btn-sm btn-success" id="add_new_product">
                                           <em class="fa fa-plus-circle"></em>
@@ -51,13 +70,6 @@
                                         </td>
                                         <td class="order-qty">
                                           <input type="number" name="quantity_of_the_product_0" value="1" min="1" step="1" max="<%= @repositories[0].quantity %>" class="form-control" />
-                                        </td>
-                                        <td class="order-qty">
-                                          <select id="shipment_by_list_0" class="form-control wd-xl" name="shipment_by_0" >
-                                            <% @shipment_by_list.each do |shipment_by| %>
-                                               <option class="form-control" value="<%= shipment_by %>"><%= shipment_by %></option>
-                                            <% end %>
-                                          </select>
                                         </td>
                                         <td class="order-qty">
                                           <input type="text" name="note_of_the_product_0" class="form-control" />

@@ -1,0 +1,68 @@
+<div class="content-heading"><%= "Pack # #{@pack.code}" %></div>
+<div class="panel panel-default">
+   <div class="panel-heading">Order Information</div>
+   <div class="panel-body">
+      <div class="row">
+         <div class="col-md-6">
+            <p class="lead bb">Details</p>
+            <form class="form-horizontal p-20">
+               <div class="form-group">
+                  <div class="col-sm-4">Pack Code:</div>
+                  <div class="col-sm-8">
+                     <strong><%= @pack.code %></strong>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-sm-4">Packaged On:</div>
+                  <div class="col-sm-8">
+                     <strong><%= @pack.date %></strong>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-sm-4">Note:</div>
+                  <div class="col-sm-8">
+                     <strong><%= @pack.note %></strong>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-sm-4">Shipment By:</div>
+                  <div class="col-sm-8">
+                     <strong><%= @pack.shipment_by %></strong>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-sm-4">Status</div>
+                  <div class="col-sm-8">
+                     <div class="label label-info"><%= @pack.status %></div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="panel">
+   <div class="panel-heading">Products In Pack</div>
+   <div class="table-responsive">
+      <table class="table table-hover table-bordered table-striped">
+         <thead>
+            <tr>
+               <th>Product Name</th>
+               <th>Quantity</th>
+               <th>Note</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% @pack.pack_items.each_with_index do |pack_item| %>
+              <tr>
+                  <td>
+                    <%= link_to "#{pack_item.product.name}", controller: "products", action: "show", id: pack_item.product.id %>
+                  </td>
+                  <td><%= pack_item.quantity %></td>
+                  <td><%= pack_item.note %></td>
+              </tr>
+            <% end %>
+         </tbody>
+      </table>
+   </div>
+</div>

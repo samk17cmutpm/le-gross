@@ -32,7 +32,7 @@
 
               swal({
                 type: 'success',
-                html: 'You entered: ' + result
+                html: 'Successfully'
               }).then(function (result) {
                 location.reload();
               });

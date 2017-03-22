@@ -12,3 +12,4 @@
 //= require moment/min/moment-with-locales.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require select2/dist/js/select2
+//= require sweetalert/dist/sweetalert.min.js

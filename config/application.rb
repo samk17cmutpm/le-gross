@@ -103,6 +103,7 @@ module LeGross
                                 'deliveries.css',
                                 'pays.js',
                                 'pays.css',
+                                'custom/pays/pays_index.js',
                                 # Dashboards Controller
                                 'dashboards.js',
                                 'dashboards.css'

@@ -1,5 +1,5 @@
 // Sweet Alert
-// ----------------------------------- 
+// -----------------------------------
 
 (function(window, document, $, undefined){
 
@@ -24,16 +24,23 @@
     $('#swal-demo4').on('click', function(e){
       e.preventDefault();
       swal({
-        title : "Are you sure?",
-        text : "You will not be able to recover this imaginary file!",
-        type : "warning",
-        showCancelButton : true,
-        confirmButtonColor : "#DD6B55",
-        confirmButtonText : "Yes, delete it!",
-        closeOnConfirm : false
-      },
-        function () {
-        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        title: 'Enter The Money',
+        input: 'number',
+        showCancelButton: true,
+        inputValidator: function (value) {
+          return new Promise(function (resolve, reject) {
+            if (value) {
+              resolve()
+            } else {
+              reject('You need to write something!')
+            }
+          })
+        }
+      }).then(function (result) {
+        swal({
+          type: 'success',
+          html: 'You entered: ' + result
+        })
       });
 
     });

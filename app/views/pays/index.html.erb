@@ -44,7 +44,9 @@
                 <%= link_to "##{order_item.order.code}", controller: "orders", action: "show", id: order_item.order.id %>
               </td>
               <td class="text-center">
-                <%= link_to 'Pay', controller: "pays", action: "make_it_paid", id: order_item.id %>
+                <button id="<%= "swal_pay_#{index}" %>" type="button" class="btn btn-sm btn-success">
+                           <em class="fa fa-check"></em>
+                </button>
               </td>
           </tr>
         <% end %>

@@ -95,17 +95,12 @@ class PacksController < ApplicationController
     @pack.update(status: "Finished")
 
     @on_the_way_repositories = Repository.where(location: "On The Way")
-
     @local_repositories  = Repository.where(location: "Local")
 
     @pack.pack_items.each do |pack_item|
-
       @on_the_way_repository = @on_the_way_repositories.find_by(product_id: pack_item.product_id)
-
       @on_the_way_repository.update(quantity: @on_the_way_repository.quantity - pack_item.quantity)
-
       @local_repository = @local_repositories.find_by(product_id: pack_item.product_id)
-
       if !@local_repository.nil?
         @local_repository.update(quantity: @local_repository.quantity + pack_item.quantity)
       else
@@ -116,9 +111,7 @@ class PacksController < ApplicationController
           location: "Local"
         )
       end
-
       @waiting_order_items = OrderItem.where(product_id: pack_item.product_id, status: "Waiting")
-
       @waiting_order_items.each do |waiting_order_item|
         if waiting_order_item.quantity <= @local_repository.quantity
           waiting_order_item.update(repository_id: @local_repository.id, can_delivery: true)
@@ -126,13 +119,7 @@ class PacksController < ApplicationController
           waiting_order_item.update(repository_id: nil, can_delivery: false)
         end
       end
-
     end
-
-
-
-
-
     redirect_to action: 'index'
   end
 

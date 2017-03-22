@@ -1,6 +1,7 @@
 class PaysController < ApplicationController
   def index
     @order_items = OrderItem.where(status: "Deliveried").includes(:product).includes(:order)
+    gon.order_items = @order_items.to_json
   end
 
   def show

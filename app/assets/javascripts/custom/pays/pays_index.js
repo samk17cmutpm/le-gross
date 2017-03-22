@@ -10,6 +10,7 @@
         swal({
           title: 'Enter The Money The Customer Pay For You ?',
           input: 'number',
+          inputValue: value.price * value.quantity,
           showCancelButton: true,
           inputValidator: function (value) {
             return new Promise(function (resolve, reject) {
@@ -21,10 +22,26 @@
             })
           }
         }).then(function (result) {
-          swal({
-            type: 'success',
-            html: 'You entered: ' + result
-          })
+          $.ajax({
+            url: "pays/make_it_paid",
+            type: "get", //send it through get method
+            data: {
+              id: value.id
+            },
+            success: function(response) {
+
+              swal({
+                type: 'success',
+                html: 'You entered: ' + result
+              }).then(function (result) {
+                location.reload();
+              });
+            },
+            error: function(xhr) {
+              //Do Something to handle error
+            }
+          });
+          console.log(result);
         });
       });
     });

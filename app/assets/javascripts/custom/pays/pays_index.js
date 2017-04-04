@@ -12,12 +12,13 @@
           input: 'number',
           inputValue: value.price * value.quantity,
           showCancelButton: true,
-          inputValidator: function (value) {
+          inputValidator: function (data) {
             return new Promise(function (resolve, reject) {
-              if (value) {
-                resolve()
+              if (data > value.price * value.quantity) {
+                reject('Paid Amount Cannot Bigger Than Total Price')
               } else {
-                reject('You need to write something!')
+                resolve()
+                console.log(data);
               }
             })
           }
@@ -26,7 +27,8 @@
             url: "pays/make_it_paid",
             type: "get", //send it through get method
             data: {
-              id: value.id
+              id: value.id,
+              paid_amount: result
             },
             success: function(response) {
 

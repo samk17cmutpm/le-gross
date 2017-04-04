@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   get   'dashboards/not_received_feedback'
 
+  get   'dashboards/not_full_paid'
+
+  get   'dashboards/make_it_paid'
+
   get   'pays', to: 'pays#index'
 
   get   'pays/show'

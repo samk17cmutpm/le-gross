@@ -40,7 +40,11 @@
                      <span>Debts</span>
                   </a>
                </li>
-
+               <li class="<%= 'active' if controller?('dashboards') && action?('not_full_paid') %>">
+                  <a href="/dashboards/not_full_paid" title="Owned Orders">
+                     <span>Owned Orders</span>
+                  </a>
+               </li>
             </ul>
           </li>
 

@@ -18,7 +18,6 @@
                 reject('Paid Amount Cannot Bigger Than Total Price')
               } else {
                 resolve()
-                console.log(data);
               }
             })
           }

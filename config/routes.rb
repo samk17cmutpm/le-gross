@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   get   'dashboards/make_it_paid'
 
+  get   'dashboards/customers_need_to_pay'
+
+  get   'dashboards/owned_orders'
+
   get   'pays', to: 'pays#index'
 
   get   'pays/show'

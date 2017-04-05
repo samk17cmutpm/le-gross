@@ -45,6 +45,11 @@
                      <span>Owned Orders</span>
                   </a>
                </li>
+               <li class="<%= 'active' if controller?('dashboards') && action?('customers_need_to_pay') %>">
+                  <a href="/dashboards/customers_need_to_pay" title="Customer Need To Pay">
+                     <span>Customer Need To Pay</span>
+                  </a>
+               </li>
             </ul>
           </li>
 

@@ -47,7 +47,7 @@ class DashboardsController < ApplicationController
   def customers_need_to_pay
     @customers_id = Order.where(status: "Owned").group("customer_id").count
     @arrs = @customers_id.keys
-    @customers = Customer.where("id = ?", @arrs)
+    @customers = Customer.where(id: @arrs)
   end
 
   def owned_orders

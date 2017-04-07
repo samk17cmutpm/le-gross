@@ -3,18 +3,42 @@
       <thead>
          <tr>
             <th>
-               <strong>Order Code</strong>
+               <strong>Client</strong>
             </th>
             <th>
-               <strong>Purchased On</strong>
+               <strong>Product Name</strong>
+            </th>
+            <th>
+               <strong>Total Price</strong>
+            </th>
+            <th>
+               <strong>Paid Amount</strong>
+            </th>
+            <th class="text-center">
+               <strong>Need To Pay</strong>
+            </th>
+            <th class="text-center">
+               <strong>Action</strong>
             </th>
          </tr>
       </thead>
       <tbody>
-          <% @orders.each_with_index do |order, index| %>
+          <% @order_items.each_with_index do |order_item, index| %>
             <tr>
-               <td><%= order.code %></td>
-               <td><%= order.date %></td>
+               <td>
+                  <%= link_to "#{order_item.order.customer.first_name} #{order_item.order.customer.last_name}", controller: "customers", action: "edit", id: order_item.order.customer.id %>
+               </td>
+               <td>
+                  <%= link_to "#{order_item.product.name}", controller: "products", action: "show", id: order_item.product.id %>
+               </td>
+               <td><%= order_item.price * order_item.quantity %></td>
+               <td><%= order_item.paid_amount %></td>
+               <td class="text-center">
+                  <span class="label label-danger"><%= order_item.price * order_item.quantity - order_item.paid_amount %></span>
+               </td>
+               <td class="text-center">
+                 <%= link_to 'Make It Paid', controller: "dashboards", action: "make_it_paid", id: order_item.id %>
+               </td>
             </tr>
           <% end %>
       </tbody>

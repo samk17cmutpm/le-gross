@@ -79,6 +79,7 @@ class OrdersController < ApplicationController
       @order.order_items.create!(
         :product_id => @product_id,
         :quantity => @quantity,
+        :customer_id => @customer_id,
         :price => @price,
         :status => "Waiting",
         :can_delivery => @can_delivery,

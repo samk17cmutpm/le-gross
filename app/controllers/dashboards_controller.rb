@@ -51,7 +51,7 @@ class DashboardsController < ApplicationController
   end
 
   def owned_orders
-    @orders = Order.where(status: "Owned", customer_id: params[:id])
+    @order_items = OrderItem.where(status: "Owned", customer_id: params[:id])
   end
 
 end
